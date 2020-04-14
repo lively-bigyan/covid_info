@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+
+class CustomTableRow extends StatelessWidget {
+  final left, right;
+  CustomTableRow({this.left,this.right});
+  @override
+  Widget build(BuildContext context) {
+    return IntrinsicHeight(
+      child: Row(
+        children: <Widget>[
+          Expanded(flex: 2, child: Text(left)),
+          VerticalDivider(
+            width: 0,
+          ),
+          Expanded(
+              flex: 4,
+              child: Center(
+                child: Text((right == "")
+                    ? "n/a"
+                    : right),
+              )),
+        ],
+      ),
+    );
+  }
+}

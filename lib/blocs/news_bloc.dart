@@ -1,0 +1,23 @@
+
+import 'package:corona_nepal/models/news.dart';
+import 'package:corona_nepal/repositories/news_repo.dart';
+
+import 'package:rxdart/rxdart.dart';
+
+class NewsBloc {
+  final NewsRepository _repository = NewsRepository();
+  final BehaviorSubject<News> _subject = BehaviorSubject<News>();
+
+  getNews() async {
+    News response = await _repository.getNews();
+    _subject.sink.add(response);
+  }
+
+  dispose() {
+    _subject.close();
+  }
+
+  BehaviorSubject<News> get subject => _subject;
+}
+
+final newsBloc = NewsBloc();
