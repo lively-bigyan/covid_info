@@ -1,13 +1,15 @@
-import 'package:corona_nepal/UI/customContainer.dart';
-import 'package:corona_nepal/blocs/countries_bloc.dart';
-import 'package:corona_nepal/blocs/nepal_bloc.dart';
-import 'package:corona_nepal/models/countryModel.dart';
-import 'package:corona_nepal/models/nepal_stats.dart';
-import 'package:corona_nepal/screens/allCountries.dart';
-import 'package:corona_nepal/screens/drawer.dart';
+import 'package:corona_nepal/locators.dart';
 import 'package:flutter/material.dart';
-import 'package:corona_nepal/utils/add_comma.dart';
 import 'package:intl/intl.dart';
+
+import 'UI/customContainer.dart';
+import 'blocs/countries_bloc.dart';
+import 'blocs/nepal_bloc.dart';
+import 'models/countryModel.dart';
+import 'models/nepal_stats.dart';
+import 'screens/allCountries.dart';
+import 'screens/drawer.dart';
+import 'utils/add_comma.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,6 +17,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  CountriesBloc countriesBloc;
+  StatsBloc statsBloc;
+  @override
+  void initState() {
+    super.initState();
+    countriesBloc = locator<CountriesBloc>();
+    statsBloc = locator<StatsBloc>();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -23,13 +34,13 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             title: Text(
               "Corona Update",
-              style: Theme.of(context).primaryTextTheme.headline,
+              style: Theme.of(context).primaryTextTheme.headline5,
             ),
             centerTitle: true,
             bottom: TabBar(
               labelStyle: Theme.of(context)
                   .textTheme
-                  .display2
+                  .headline4
                   .copyWith(fontSize: 24, fontWeight: FontWeight.w500),
               indicatorWeight: 5,
               indicatorColor: Color(0xffffa45c),
@@ -60,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(20),
                               child: Text("${snapshot.data.error}"),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             RaisedButton(
                                 color: Theme.of(context).primaryColor,
                                 onPressed: () {
@@ -85,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                                   'Last Updated At: ',
                                   style: Theme.of(context)
                                       .accentTextTheme
-                                      .body1
+                                      .bodyText1
                                       .copyWith(fontSize: 18),
                                 ),
                                 Text(
@@ -94,11 +105,11 @@ class _HomePageState extends State<HomePage> {
                                             snapshot.data.updatedAt)),
                                     style: Theme.of(context)
                                         .accentTextTheme
-                                        .body1
+                                        .bodyText1
                                         .copyWith(fontSize: 18)),
                               ],
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             CustomContainer(
                                 title: "Total Tests",
                                 textColor: Colors.blueGrey,
@@ -106,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                                 number: snapshot.data.testedTotal
                                     .toString()
                                     .addComma()),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             IntrinsicHeight(
                               child: Row(
                                   mainAxisAlignment:
@@ -122,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                                             .addComma(),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    const SizedBox(width: 10),
                                     Expanded(
                                       child: CustomContainer(
                                         color: Colors.indigo[100],
@@ -135,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ]),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             CustomContainer(
                               color: Colors.red[100],
                               textColor: Colors.red,
@@ -143,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                               number:
                                   snapshot.data.deaths.toString().addComma(),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             IntrinsicHeight(
                               child: Row(
                                 mainAxisAlignment:
@@ -159,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                                           .addComma(),
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   Expanded(
                                     child: CustomContainer(
                                       color: Colors.orange[100],
@@ -173,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             IntrinsicHeight(
                               child: Row(
                                 mainAxisAlignment:
@@ -227,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                               padding: const EdgeInsets.all(20),
                               child: Text("${snapshot.data.error}"),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             RaisedButton(
                                 color: Theme.of(context).primaryColor,
                                 onPressed: () {
@@ -253,18 +264,26 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
                                     GestureDetector(
-                                      onTap: (){
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>CountryList()));
-                                      },
-                                      child: Text('Countrywise Stats',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .title
-                                              .copyWith(color:Theme.of(context).primaryColor,fontWeight:FontWeight.w500, decoration: TextDecoration.underline))
-                                    ),
+                                        onTap: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CountryList()));
+                                        },
+                                        child: Text('Countrywise Stats',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .subtitle1
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .primaryColor,
+                                                    fontWeight: FontWeight.w500,
+                                                    decoration: TextDecoration
+                                                        .underline))),
                                   ],
                                 ),
-                                SizedBox(height:10),
+                                const SizedBox(height: 10),
                                 Row(
                                   children: <Widget>[
                                     Expanded(
@@ -279,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                                 IntrinsicHeight(
@@ -297,7 +316,7 @@ class _HomePageState extends State<HomePage> {
                                                 .toString()
                                                 .addComma()),
                                       ),
-                                      SizedBox(width: 10),
+                                      const SizedBox(width: 10),
                                       Expanded(
                                         child: CustomContainer(
                                           color: Colors.indigo[100],
@@ -311,7 +330,7 @@ class _HomePageState extends State<HomePage> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 CustomContainer(
                                   color: Colors.blue[100],
                                   textColor: Colors.blue,
@@ -320,7 +339,7 @@ class _HomePageState extends State<HomePage> {
                                       .toString()
                                       .addComma(),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 IntrinsicHeight(
                                   child: Row(
                                       mainAxisAlignment:
@@ -337,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                                                 .addComma(),
                                           ),
                                         ),
-                                        SizedBox(width: 10),
+                                        const SizedBox(width: 10),
                                         Expanded(
                                           child: CustomContainer(
                                             color: Colors.red[100],
@@ -351,7 +370,7 @@ class _HomePageState extends State<HomePage> {
                                         )
                                       ]),
                                 ),
-                                SizedBox(height: 20),
+                                const SizedBox(height: 20),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [

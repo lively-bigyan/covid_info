@@ -1,5 +1,7 @@
-import 'package:corona_nepal/models/myths.dart';
-import 'package:corona_nepal/services/db_helper.dart';
+import 'package:corona_nepal/utils/widgets/handle_errors.dart';
+
+import '../models/myths.dart';
+import '../services/db_helper.dart';
 
 class MythRepository {
   Future<Myths> getMyths() async {
@@ -9,7 +11,7 @@ class MythRepository {
       return Myths.fromJson(data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      return Myths.withError(error);
+      return Myths.withError(handleError(error));
     }
   }
 }

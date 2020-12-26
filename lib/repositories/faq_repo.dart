@@ -1,7 +1,9 @@
 import 'dart:convert';
-import 'package:corona_nepal/models/faq.dart';
-import 'package:corona_nepal/services/db_helper.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/faq.dart';
+import '../services/db_helper.dart';
 
 class FAQRepository {
   Future<FAQ> getFAQ() async {

@@ -1,45 +1,50 @@
 class AffectedInNepal {
   List<Data> data;
-  int total;
-  int limit;
-  int start;
-  int page;
   String error;
 
-  AffectedInNepal(
-      {this.data, this.total, this.limit, this.start, this.page, this.error});
+  AffectedInNepal({this.data, this.error});
 
-  AffectedInNepal.fromJson(Map<String, dynamic> json) {
-    if (json['data'] != null) {
+  AffectedInNepal.fromJson(List<dynamic> json) {
+    if (json != null) {
       data = new List<Data>();
-      json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+      json.forEach((v) {
+        Data jsonToData = Data.fromJson(v);
+        data.add(jsonToData);
       });
     }
-    total = json['total'];
-    limit = json['limit'];
-    start = json['start'];
-    page = json['page'];
   }
   AffectedInNepal.withError(String errorVal) {
     data = [];
     error = errorVal;
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.data != null) {
-      data['data'] = this.data.map((v) => v.toJson()).toList();
-    }
-    data['total'] = this.total;
-    data['limit'] = this.limit;
-    data['start'] = this.start;
-    data['page'] = this.page;
-    return data;
-  }
 }
 
 class Data {
+  Data({
+    this.id,
+    this.province,
+    this.district,
+    this.municipality,
+    this.createdOn,
+    this.modifiedOn,
+    this.label,
+    this.gender,
+    this.age,
+    this.point,
+    this.occupation,
+    this.reportedOn,
+    this.recoveredOn,
+    this.deathOn,
+    this.currentState,
+    this.isReinfected,
+    this.source,
+    this.comment,
+    this.type,
+    this.nationality,
+    this.ward,
+    this.relatedTo,
+  });
+
   int id;
   int province;
   int district;
@@ -50,92 +55,62 @@ class Data {
   String gender;
   int age;
   Point point;
-  Null occupation;
+  dynamic occupation;
   String reportedOn;
+  String recoveredOn;
+  dynamic deathOn;
   String currentState;
+  bool isReinfected;
   String source;
   String comment;
+  String type;
   int nationality;
   int ward;
-  Data(
-      {this.id,
-      this.province,
-      this.district,
-      this.municipality,
-      this.createdOn,
-      this.modifiedOn,
-      this.label,
-      this.gender,
-      this.age,
-      this.point,
-      this.occupation,
-      this.reportedOn,
-      this.currentState,
-      this.source,
-      this.comment,
-      this.nationality,
-      this.ward});
+  List<dynamic> relatedTo;
 
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    province = json['province'];
-    district = json['district'];
-    municipality = json['municipality'];
-    createdOn = json['createdOn'];
-    modifiedOn = json['modifiedOn'];
-    label = json['label'];
-    gender = json['gender'];
-    age = json['age'];
-    point = json['point'] != null ? new Point.fromJson(json['point']) : null;
-    occupation = json['occupation'];
-    reportedOn = json['reportedOn'];
-    currentState = json['currentState'];
-    source = json['source'];
-    comment = json['comment'];
-    nationality = json['nationality'];
-    ward = json['ward'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['province'] = this.province;
-    data['district'] = this.district;
-    data['municipality'] = this.municipality;
-    data['createdOn'] = this.createdOn;
-    data['modifiedOn'] = this.modifiedOn;
-    data['label'] = this.label;
-    data['gender'] = this.gender;
-    data['age'] = this.age;
-    if (this.point != null) {
-      data['point'] = this.point.toJson();
-    }
-    data['occupation'] = this.occupation;
-    data['reportedOn'] = this.reportedOn;
-    data['currentState'] = this.currentState;
-    data['source'] = this.source;
-    data['comment'] = this.comment;
-    data['nationality'] = this.nationality;
-    data['ward'] = this.ward;
-    return data;
-  }
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        id: json["id"],
+        province: json["province"],
+        district: json["district"],
+        municipality: json["municipality"],
+        createdOn: json["createdOn"],
+        modifiedOn: json["modifiedOn"],
+        label: json["label"],
+        gender: json["gender"],
+        age: json["age"],
+        point: Point.fromJson(json["point"]),
+        occupation: json["occupation"],
+        reportedOn: json["reportedOn"],
+        recoveredOn: json["recoveredOn"],
+        deathOn: json["deathOn"],
+        currentState: json["currentState"],
+        isReinfected: json["isReinfected"],
+        source: json["source"],
+        comment: json["comment"],
+        type: json["type"],
+        nationality: json["nationality"] == null ? null : json["nationality"],
+        ward: json["ward"],
+        relatedTo: List<dynamic>.from(json["relatedTo"].map((x) => x)),
+      );
 }
 
 class Point {
+  Point({
+    this.type,
+    this.coordinates,
+  });
+
   String type;
   List<double> coordinates;
 
-  Point({this.type, this.coordinates});
+  factory Point.fromJson(Map<String, dynamic> json) => Point(
+        type: json["type"],
+        coordinates:
+            List<double>.from(json["coordinates"].map((x) => x.toDouble())),
+      );
 
-  Point.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    coordinates = json['coordinates'].cast<double>();
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['coordinates'] = this.coordinates;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        "type": type,
+        "coordinates": List<dynamic>.from(coordinates.map((x) => x)),
+      };
 }

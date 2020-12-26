@@ -1,8 +1,11 @@
-import 'package:corona_nepal/blocs/news_bloc.dart';
-import 'package:corona_nepal/models/news.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../blocs/news_bloc.dart';
+import '../locators.dart';
+import '../models/news.dart';
 
 class NewsList extends StatefulWidget {
   @override
@@ -10,6 +13,7 @@ class NewsList extends StatefulWidget {
 }
 
 class _NewsListState extends State<NewsList> {
+  NewsBloc newsBloc;
   _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -21,6 +25,7 @@ class _NewsListState extends State<NewsList> {
   @override
   void initState() {
     super.initState();
+    newsBloc = locator<NewsBloc>();
     newsBloc.getNews();
   }
 
@@ -44,7 +49,7 @@ class _NewsListState extends State<NewsList> {
                       padding: const EdgeInsets.all(20),
                       child: Text("${snapshot.data.error}"),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     RaisedButton(
                         color: Theme.of(context).primaryColor,
                         onPressed: () {
@@ -73,20 +78,20 @@ class _NewsListState extends State<NewsList> {
                                           snapshot.data.data[i].updatedAt)))
                                 ],
                               ),
-                              SizedBox(height: 5),
+                              const SizedBox(height: 5),
                               Container(
                                   height: 150,
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     image: DecorationImage(
-                                        image: NetworkImage(
+                                        image: CachedNetworkImageProvider(
                                             snapshot.data.data[i].imageUrl),
                                         fit: BoxFit.fill),
                                   )),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Text(snapshot.data.data[i].title,
-                                  style: Theme.of(context).textTheme.subhead),
+                                  style: Theme.of(context).textTheme.subtitle1),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
@@ -95,7 +100,7 @@ class _NewsListState extends State<NewsList> {
                                     snapshot.data.data[i].source,
                                     style: Theme.of(context)
                                         .textTheme
-                                        .body1
+                                        .bodyText1
                                         .copyWith(
                                             color:
                                                 Theme.of(context).primaryColor),
@@ -113,7 +118,7 @@ class _NewsListState extends State<NewsList> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                           child: Divider(),
                         )

@@ -1,6 +1,7 @@
-import 'package:corona_nepal/models/hospitals.dart';
-import 'package:corona_nepal/repositories/hospital_repo.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../models/hospitals.dart';
+import '../repositories/hospital_repo.dart';
 
 class HospitalsBloc {
   final HospitalRepository _repository = HospitalRepository();
@@ -17,5 +18,3 @@ class HospitalsBloc {
 
   BehaviorSubject<Hospitals> get subject => _subject;
 }
-
-final hospitalsBloc = HospitalsBloc();

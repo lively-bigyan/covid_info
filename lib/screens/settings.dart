@@ -1,9 +1,9 @@
-import 'package:corona_nepal/UI/theme.dart';
-import 'package:corona_nepal/providers/theme_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../UI/theme.dart';
+import '../providers/theme_notifier.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -13,7 +13,7 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   var _darkTheme = false;
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
     _darkTheme = (themeNotifier.getTheme() == darkTheme);
     return Scaffold(
@@ -39,6 +39,7 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
     );
   }
+
   void onThemeChanged(bool value, ThemeNotifier themeNotifier) async {
     (value)
         ? themeNotifier.setTheme(darkTheme)

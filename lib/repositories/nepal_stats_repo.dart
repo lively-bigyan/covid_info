@@ -1,8 +1,9 @@
 import 'dart:convert';
-import 'package:corona_nepal/models/hospitals.dart';
-import 'package:corona_nepal/models/nepal_stats.dart';
-import 'package:corona_nepal/services/db_helper.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/nepal_stats.dart';
+import '../services/db_helper.dart';
 
 class StatsRepository {
   Future<NepalStats> getStats() async {

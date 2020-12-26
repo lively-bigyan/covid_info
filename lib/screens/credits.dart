@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Credits extends StatelessWidget {
@@ -41,118 +42,120 @@ class Credits extends StatelessWidget {
         ),
         SliverFillRemaining(
             hasScrollBody: false,
-            child: ListView(
-              padding: EdgeInsets.all(20),
-              shrinkWrap: true,
-              physics: ClampingScrollPhysics(),
-              children: <Widget>[
-                Text(
-                  'Designed and developed by:',
-                  style: Theme.of(context).accentTextTheme.title,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  children: <Widget>[
-                    Text(
-                      'Bigyan Ghimire',
-                      style: Theme.of(context)
-                          .accentTextTheme
-                          .headline
-                          .copyWith(color: Theme.of(context).primaryColor),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.mail, color: Colors.red[700]),
-                    SizedBox(width: 10),
-                    Text('lively.bigyan@gmail.com'),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.textsms, color: Colors.blue[600]),
-                    SizedBox(width: 10),
-                    GestureDetector(
-                      onTap: () {
-                        launch('https://www.facebook.com/lively.bigyan');
-                      },
-                      child: Text('facebook.com/lively.bigyan',
-                          style: TextStyle(color: Colors.blue)),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Text('Credits', style: Theme.of(context).accentTextTheme.title),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('DataSet and API credits',
-                        style: Theme.of(context).textTheme.subhead),
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text('Nepal Corona Open Data API',
-                          style: TextStyle(fontSize: 16)),
-                    ),
-                    Padding(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    'Designed and developed by:',
+                    style: Theme.of(context).accentTextTheme.headline6,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Text(
+                        'Bigyan Ghimire',
+                        style: Theme.of(context)
+                            .accentTextTheme
+                            .headline6
+                            .copyWith(color: Theme.of(context).primaryColor),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    children: <Widget>[
+                      Icon(SFSymbols.envelope, color: Colors.red[700]),
+                      const SizedBox(width: 10),
+                      Text('lively.bigyan@gmail.com'),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: <Widget>[
+                      Icon(SFSymbols.logo_facebook, color: Colors.blue[600]),
+                      const SizedBox(width: 10),
+                      GestureDetector(
+                        onTap: () {
+                          launch('https://www.facebook.com/lively.bigyan');
+                        },
+                        child: Text('facebook.com/lively.bigyan',
+                            style: TextStyle(color: Colors.blue)),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text('Credits',
+                      style: Theme.of(context).accentTextTheme.subtitle1),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('DataSet and API credits',
+                          style: Theme.of(context).textTheme.subtitle1),
+                      Padding(
                         padding: EdgeInsets.only(left: 10),
-                        child: Text('api.covid19api.com')),
-                    SizedBox(height: 16),
-                    Text('Design credits',
-                        style: Theme.of(context).textTheme.subhead),
-                    Row(
-                      children: <Widget>[
-                        Text('Animations: '),
-                        GestureDetector(
-                          onTap: () {
-                            launch('https://rive.app/a/zerolive/files');
-                          },
-                          child: Text(
-                            'Zerolive',
-                            style: Theme.of(context).textTheme.subhead.copyWith(color:Theme.of(context).primaryColor),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      children: <Widget>[
-                        Text('Hospital illustration: '),
-                        GestureDetector(
+                        child: Text('Nepal Corona Open Data API',
+                            style: TextStyle(fontSize: 16)),
+                      ),
+                      const SizedBox(height: 16),
+                      Text('Design credits',
+                          style: Theme.of(context).textTheme.subtitle1),
+                      Row(
+                        children: <Widget>[
+                          Text('Animations: '),
+                          GestureDetector(
                             onTap: () {
-                              launch('https://dribbble.com/almigor');
+                              launch('https://rive.app/a/zerolive/files');
                             },
                             child: Text(
-                              'Aleksandar Savic',
-                              style: TextStyle(color: Colors.blue[700]),
-                            )),
-                      ],
-                    ),
-                    SizedBox(height: 5),
-                    Row(
-                      children: <Widget>[
-                        Text('Credit Page Illustration: '),
-                        GestureDetector(
-                          onTap: () {
-                            launch('https://undraw.co/illustrations');
-                          },
-                          child: Text(
-                            'UnDraw illustrations',
-                            style: TextStyle(color: Colors.blue[700]),
+                              'Zerolive',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  .copyWith(
+                                      color: Theme.of(context).primaryColor),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    
-                  ],
-                )
-              ],
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: <Widget>[
+                          Text('Hospital illustration: '),
+                          GestureDetector(
+                              onTap: () {
+                                launch('https://dribbble.com/almigor');
+                              },
+                              child: Text(
+                                'Aleksandar Savic',
+                                style: TextStyle(color: Colors.blue[700]),
+                              )),
+                        ],
+                      ),
+                      const SizedBox(height: 5),
+                      Row(
+                        children: <Widget>[
+                          Text('Credit Page Illustration: '),
+                          GestureDetector(
+                            onTap: () {
+                              launch('https://undraw.co/illustrations');
+                            },
+                            child: Text(
+                              'UnDraw illustrations',
+                              style: TextStyle(color: Colors.blue[700]),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
             )),
       ],
     ));

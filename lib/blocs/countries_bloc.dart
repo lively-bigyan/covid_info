@@ -1,6 +1,7 @@
-import 'package:corona_nepal/models/countryModel.dart';
-import 'package:corona_nepal/repositories/country_repo.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../models/countryModel.dart';
+import '../repositories/country_repo.dart';
 
 class CountriesBloc {
   final CountryRepository _repository = CountryRepository();
@@ -18,5 +19,3 @@ class CountriesBloc {
 
   BehaviorSubject<AllCountries> get subject => _subject;
 }
-
-final countriesBloc = CountriesBloc();

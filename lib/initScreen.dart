@@ -1,9 +1,12 @@
 import 'dart:async';
-import 'package:corona_nepal/blocs/countries_bloc.dart';
-import 'package:corona_nepal/blocs/nepal_bloc.dart';
-import 'package:corona_nepal/home.dart';
+
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
+
+import 'blocs/countries_bloc.dart';
+import 'blocs/nepal_bloc.dart';
+import 'home.dart';
+import 'locators.dart';
 
 class InitScreen extends StatefulWidget {
   @override
@@ -15,8 +18,8 @@ class _InitScreenState extends State<InitScreen> {
   void initState() {
     super.initState();
     startTime();
-    statsBloc.getStats();
-    countriesBloc.getCountries();
+    locator<StatsBloc>().getStats();
+    locator<CountriesBloc>().getCountries();
   }
 
   startTime() async {
@@ -39,10 +42,10 @@ class _InitScreenState extends State<InitScreen> {
               "COVID-19 INFO NEPAL",
               style: Theme.of(context)
                   .textTheme
-                  .headline
+                  .headline6
                   .copyWith(color: Theme.of(context).primaryColor),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -53,7 +56,7 @@ class _InitScreenState extends State<InitScreen> {
                   fit: BoxFit.cover,
                   animation: "Is Loading"),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text("An unofficial covid-19 updates application."),
           ],
         ),

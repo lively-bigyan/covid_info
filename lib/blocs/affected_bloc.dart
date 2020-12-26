@@ -1,10 +1,12 @@
-import 'package:corona_nepal/models/nepalCases.dart';
-import 'package:corona_nepal/repositories/affected_repo.dart';
 import 'package:rxdart/rxdart.dart';
+
+import '../models/nepalCases.dart';
+import '../repositories/affected_repo.dart';
 
 class AffectedBloc {
   final AffectedRepository _repository = AffectedRepository();
-  final BehaviorSubject<AffectedInNepal> _subject = BehaviorSubject<AffectedInNepal>();
+  final BehaviorSubject<AffectedInNepal> _subject =
+      BehaviorSubject<AffectedInNepal>();
 
   getAffected() async {
     AffectedInNepal response = await _repository.getAffected();
@@ -17,5 +19,3 @@ class AffectedBloc {
 
   BehaviorSubject<AffectedInNepal> get subject => _subject;
 }
-
-final affectedBloc = AffectedBloc();

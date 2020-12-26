@@ -1,9 +1,7 @@
-
-import 'package:corona_nepal/models/nepal_stats.dart';
-import 'package:corona_nepal/repositories/nepal_stats_repo.dart';
-
-
 import 'package:rxdart/rxdart.dart';
+
+import '../models/nepal_stats.dart';
+import '../repositories/nepal_stats_repo.dart';
 
 class StatsBloc {
   final StatsRepository _repository = StatsRepository();
@@ -20,5 +18,3 @@ class StatsBloc {
 
   BehaviorSubject<NepalStats> get subject => _subject;
 }
-
-final statsBloc = StatsBloc();

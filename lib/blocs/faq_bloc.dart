@@ -1,7 +1,7 @@
-import 'package:corona_nepal/models/faq.dart';
-import 'package:corona_nepal/repositories/faq_repo.dart';
-
 import 'package:rxdart/rxdart.dart';
+
+import '../models/faq.dart';
+import '../repositories/faq_repo.dart';
 
 class FAQBloc {
   final FAQRepository _repository = FAQRepository();
@@ -18,5 +18,3 @@ class FAQBloc {
 
   BehaviorSubject<FAQ> get subject => _subject;
 }
-
-final faqBloc = FAQBloc();

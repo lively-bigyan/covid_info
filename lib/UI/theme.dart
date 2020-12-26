@@ -10,7 +10,19 @@ final darkTheme = ThemeData(
     buttonColor: Color(0xff242224).withOpacity(0.4),
     canvasColor: Color(0xff474547),
     cardColor: Colors.blueGrey,
-    textTheme: Typography.whiteMountainView.apply(fontFamily: 'Abel'),
+    textTheme: Typography.blackMountainView.apply(fontFamily: 'Abel').copyWith(
+        headline5: TextStyle(
+            fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+        headline6: TextStyle(
+            fontFamily: "OpenSans",
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff4a4a4a)),
+        subtitle1: TextStyle(
+            fontFamily: "OpenSans", fontSize: 16, fontWeight: FontWeight.w500),
+        subtitle2: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
+        bodyText1: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
+        bodyText2: TextStyle(fontSize: 12)),
     primaryTextTheme:
         Typography.whiteMountainView.apply(fontFamily: 'Montserrat'),
     accentTextTheme: Typography.whiteCupertino.apply(fontFamily: 'Montserrat'),
@@ -31,17 +43,17 @@ final lightTheme = ThemeData(
   primaryTextTheme: Typography.whiteMountainView.apply(fontFamily: "Abel"),
   accentTextTheme: Typography.blackMountainView.apply(fontFamily: 'Abel'),
   textTheme: Typography.blackMountainView.apply(fontFamily: 'Abel').copyWith(
-      display1: TextStyle(
+      headline5: TextStyle(
           fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
-      headline: TextStyle(
+      headline6: TextStyle(
           fontFamily: "OpenSans",
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Color(0xff4a4a4a)),
-      subhead: TextStyle(
+      subtitle1: TextStyle(
           fontFamily: "OpenSans", fontSize: 16, fontWeight: FontWeight.w500),
-      subtitle: TextStyle(fontSize: 14, color: Color(0xff4a4a4a))
+      subtitle2: TextStyle(fontSize: 14, color: Color(0xff4a4a4a))
           .copyWith(fontFamily: "Abel"),
-      body1: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
-      body2: TextStyle(fontSize: 12).copyWith(fontFamily: "Abel")),
+      bodyText1: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
+      bodyText2: TextStyle(fontSize: 12)),
 );

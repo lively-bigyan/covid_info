@@ -1,15 +1,12 @@
-import 'package:corona_nepal/models/districtData.dart';
-import 'package:corona_nepal/models/nepalCases.dart';
 import 'package:flutter/material.dart';
-import 'package:corona_nepal/screens/hospital/map.dart';
 import 'package:intl/intl.dart';
-import 'package:corona_nepal/utils/cap.dart';
+
+import '../../models/nepalCases.dart';
+import '../../utils/cap.dart';
 
 class AffectedDetails extends StatelessWidget {
-  final markers;
-  final Key _mapKey = UniqueKey();
   final Data affected;
-  AffectedDetails({this.affected, this.markers});
+  AffectedDetails({this.affected});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,63 +19,67 @@ class AffectedDetails extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Text("Reported On: ", style: Theme.of(context).textTheme.subhead),
+              Text("Reported On: ",
+                  style: Theme.of(context).textTheme.subtitle1),
               Text(
-                  DateFormat("MMMM d, y")
-                      .format(DateTime.parse(affected.reportedOn)),
-                  style: Theme.of(context).textTheme.title.copyWith(
+                  (affected.reportedOn != null)
+                      ? DateFormat("MMMM d, y").format(
+                          DateTime.parse(affected.reportedOn.toString()))
+                      : "---",
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: 16,
                       fontFamily: "Montserrat",
                       fontWeight: FontWeight.bold)),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             children: <Widget>[
-              Text('Case Id: ', style: Theme.of(context).textTheme.subhead),
+              Text('Case Id: ', style: Theme.of(context).textTheme.subtitle1),
               Hero(
                   tag: affected.id,
                   transitionOnUserGestures: true,
                   child: Material(
                       type: MaterialType.transparency,
                       child: Text(affected.label,
-                          style: Theme.of(context).textTheme.title.copyWith(
+                          style: Theme.of(context).textTheme.subtitle1.copyWith(
                               fontSize: 16,
                               fontFamily: "Montserrat",
                               fontWeight: FontWeight.bold)))),
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             children: <Widget>[
-              Text('Name: ', style: Theme.of(context).textTheme.subhead),
+              Text('Name: ', style: Theme.of(context).textTheme.subtitle1),
               Text('Not disclosed',
-                  style: Theme.of(context).textTheme.title.copyWith(
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: 16,
                       fontFamily: "Montserrat",
                       fontWeight: FontWeight.bold))
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Row(
                 children: <Widget>[
-                  Text('Gender: ', style: Theme.of(context).textTheme.subhead),
+                  Text('Gender: ',
+                      style: Theme.of(context).textTheme.subtitle1),
                   Text(affected.gender.cap(),
-                      style: Theme.of(context).textTheme.title.copyWith(
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
                           fontSize: 16,
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Row(
                 children: <Widget>[
-                  Text('Age: ', style: Theme.of(context).textTheme.subhead),
+                  Text('Age: ', style: Theme.of(context).textTheme.subtitle1),
                   Text(affected.age.toString(),
-                      style: Theme.of(context).textTheme.title.copyWith(
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
                           fontSize: 16,
                           fontFamily: "Montserrat",
                           fontWeight: FontWeight.bold)),
@@ -86,14 +87,15 @@ class AffectedDetails extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             children: <Widget>[
-              Text('Case Status: ', style: Theme.of(context).textTheme.subhead),
+              Text('Case Status: ',
+                  style: Theme.of(context).textTheme.subtitle1),
               Text(affected.currentState.toString().cap(),
                   style: Theme.of(context)
                       .textTheme
-                      .title
+                      .subtitle1
                       .copyWith(
                           fontSize: 16,
                           fontFamily: "Montserrat",
@@ -104,24 +106,7 @@ class AffectedDetails extends StatelessWidget {
                               : Colors.orange)),
             ],
           ),
-          SizedBox(height: 20),
-          Container(
-            decoration: BoxDecoration(color: Colors.orange[50]),
-            child: ListTile(
-                title: Text("Find in Maps"),
-                trailing: Icon(Icons.directions),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Map(
-                              label: "Infected Location",
-                              allMarkers: markers,
-                              key: _mapKey,
-                              longitude: affected.point.coordinates[0],
-                              latitude: affected.point.coordinates[1])));
-                }),
-          ),
+          const SizedBox(height: 20),
         ],
       ),
     );

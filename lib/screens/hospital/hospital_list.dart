@@ -1,8 +1,9 @@
-import 'package:corona_nepal/blocs/hospital_bloc.dart';
-import 'package:corona_nepal/models/hospitals.dart';
-import 'package:corona_nepal/screens/hospital/hospital_details.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../../blocs/hospital_bloc.dart';
+import '../../locators.dart';
+import '../../models/hospitals.dart';
+import 'hospital_details.dart';
 
 class HospitalList extends StatefulWidget {
   @override
@@ -11,9 +12,11 @@ class HospitalList extends StatefulWidget {
 
 class _HospitalListState extends State<HospitalList> {
   bool enableFilter = false;
+  HospitalsBloc hospitalsBloc;
   String filter = "";
   @override
   void initState() {
+    hospitalsBloc = locator<HospitalsBloc>();
     super.initState();
     hospitalsBloc.getHospitals();
   }
@@ -41,7 +44,7 @@ class _HospitalListState extends State<HospitalList> {
                 ),
               )
             : Text('Hospitals',
-                style: Theme.of(context).primaryTextTheme.headline),
+                style: Theme.of(context).primaryTextTheme.headline5),
         actions: <Widget>[
           IconButton(
             icon: enableFilter ? Icon(Icons.clear) : Icon(Icons.search),
@@ -58,12 +61,12 @@ class _HospitalListState extends State<HospitalList> {
               dense: true,
               leading: Text(
                 'Province',
-                style: Theme.of(context).primaryTextTheme.body1,
+                style: Theme.of(context).primaryTextTheme.bodyText1,
               ),
               title: Text('Hospital',
-                  style: Theme.of(context).primaryTextTheme.title),
+                  style: Theme.of(context).primaryTextTheme.headline6),
               subtitle: Text('Hospital Contact',
-                  style: Theme.of(context).primaryTextTheme.body1),
+                  style: Theme.of(context).primaryTextTheme.bodyText1),
             ),
             preferredSize: Size.fromHeight(50)),
       ),
@@ -81,7 +84,7 @@ class _HospitalListState extends State<HospitalList> {
                       padding: const EdgeInsets.all(20),
                       child: Text("${snapshot.data.error}"),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     RaisedButton(
                         color: Theme.of(context).primaryColor,
                         onPressed: () {
@@ -114,7 +117,7 @@ class _HospitalListState extends State<HospitalList> {
                                       snapshot.data.data[i].name,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .body1
+                                          .bodyText1
                                           .copyWith(
                                               fontWeight: FontWeight.bold),
                                     ),
@@ -128,7 +131,7 @@ class _HospitalListState extends State<HospitalList> {
                                               .replaceAll(",", ", "),
                                   style: Theme.of(context)
                                       .textTheme
-                                      .body2
+                                      .bodyText2
                                       .copyWith(fontSize: 14),
                                 ),
                                 onTap: () {
@@ -136,7 +139,8 @@ class _HospitalListState extends State<HospitalList> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => HospitalDetails(
-                                              hospital: snapshot.data.data[i])));
+                                              hospital:
+                                                  snapshot.data.data[i])));
                                 },
                               ),
                               Divider(

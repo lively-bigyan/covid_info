@@ -1,8 +1,7 @@
-
-import 'package:corona_nepal/models/myths.dart';
-import 'package:corona_nepal/repositories/myths_repo.dart';
-
 import 'package:rxdart/rxdart.dart';
+
+import '../models/myths.dart';
+import '../repositories/myths_repo.dart';
 
 class MythBloc {
   final MythRepository _repository = MythRepository();
@@ -19,5 +18,3 @@ class MythBloc {
 
   BehaviorSubject<Myths> get subject => _subject;
 }
-
-final mythBloc = MythBloc();

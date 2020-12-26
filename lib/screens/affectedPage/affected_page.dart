@@ -1,9 +1,11 @@
-import 'package:corona_nepal/blocs/affected_bloc.dart';
-import 'package:corona_nepal/models/nepalCases.dart';
-import 'package:corona_nepal/screens/affectedPage/affected_details.dart';
+import 'package:corona_nepal/locators.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:corona_nepal/utils/cap.dart';
+
+import '../../blocs/affected_bloc.dart';
+import '../../models/nepalCases.dart';
+import '../../utils/cap.dart';
+import 'affected_details.dart';
 
 class AffectedList extends StatefulWidget {
   @override
@@ -12,9 +14,10 @@ class AffectedList extends StatefulWidget {
 
 class _AffectedListState extends State<AffectedList> {
   List<Marker> _markerlist = [];
+  AffectedBloc affectedBloc;
   @override
   void initState() {
-    // TODO: implement initState
+    affectedBloc = locator<AffectedBloc>();
     super.initState();
     affectedBloc.getAffected();
   }
@@ -29,12 +32,12 @@ class _AffectedListState extends State<AffectedList> {
                 dense: true,
                 leading: Text(
                   'Province',
-                  style: Theme.of(context).primaryTextTheme.body1,
+                  style: Theme.of(context).primaryTextTheme.bodyText1,
                 ),
                 title: Text('Infected Gender [Age]',
-                    style: Theme.of(context).primaryTextTheme.title),
+                    style: Theme.of(context).primaryTextTheme.subtitle1),
                 subtitle: Text('Infected ID',
-                    style: Theme.of(context).primaryTextTheme.body1),
+                    style: Theme.of(context).primaryTextTheme.bodyText1),
               ),
               preferredSize: Size.fromHeight(50)),
         ),
@@ -52,7 +55,7 @@ class _AffectedListState extends State<AffectedList> {
                         padding: const EdgeInsets.all(20),
                         child: Text("${snapshot.data.error}"),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       RaisedButton(
                           color: Theme.of(context).primaryColor,
                           onPressed: () {
@@ -63,54 +66,41 @@ class _AffectedListState extends State<AffectedList> {
                     ],
                   ));
                 }
-                _markerlist.clear();
-                for (var items in snapshot.data.data)
-                  _markerlist.add(
-                    Marker(
-                        markerId: MarkerId(items.label),
-                        position: LatLng(items.point.coordinates[1],
-                            items.point.coordinates[0]),
-                        infoWindow: InfoWindow(title: items.label),
-                        icon: BitmapDescriptor.defaultMarkerWithHue(
-                          BitmapDescriptor.hueViolet,
-                        )),
-                  );
                 return ListView.builder(
                   shrinkWrap: true,
                   physics: ClampingScrollPhysics(),
                   itemCount: snapshot.data.data.length,
                   itemBuilder: (context, i) {
+                    final data = snapshot.data.data[i];
                     return Container(
                       decoration: BoxDecoration(
-                          color:
-                              snapshot.data.data[i].currentState == "recovered"
-                                  ? Colors.green[100]
-                                  : Colors.blue[100]),
+                          color: data.currentState == "recovered"
+                              ? Colors.green[100]
+                              : Colors.blue[100]),
                       child: ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Colors.blue[300],
-                            child:
-                                Text(snapshot.data.data[i].province.toString(),
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    )),
+                            child: Text("${data.province}",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                )),
                           ),
                           title: Text(
-                              snapshot.data.data[i].gender.cap() +
-                                  " [${snapshot.data.data[i].age}]",
+                              "${(data.gender ?? "n/A").cap()}" +
+                                  " [${data.age}]",
                               style: Theme.of(context)
                                   .textTheme
-                                  .body1
+                                  .bodyText1
                                   .copyWith(fontWeight: FontWeight.bold)),
                           subtitle: Hero(
-                            tag: snapshot.data.data[i].label,
+                            tag: data.label,
                             transitionOnUserGestures: true,
                             child: Material(
                               type: MaterialType.transparency,
-                              child: Text(snapshot.data.data[i].label,
+                              child: Text(data.label,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .body2
+                                      .bodyText2
                                       .copyWith(fontSize: 14)),
                             ),
                           ),
@@ -118,10 +108,8 @@ class _AffectedListState extends State<AffectedList> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => AffectedDetails(
-                                          affected: snapshot.data.data[i],
-                                          markers: _markerlist,
-                                        )));
+                                    builder: (context) =>
+                                        AffectedDetails(affected: data)));
                           }),
                     );
                   },

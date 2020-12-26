@@ -1,8 +1,7 @@
-
-import 'package:corona_nepal/models/news.dart';
-import 'package:corona_nepal/repositories/news_repo.dart';
-
 import 'package:rxdart/rxdart.dart';
+
+import '../models/news.dart';
+import '../repositories/news_repo.dart';
 
 class NewsBloc {
   final NewsRepository _repository = NewsRepository();
@@ -19,5 +18,3 @@ class NewsBloc {
 
   BehaviorSubject<News> get subject => _subject;
 }
-
-final newsBloc = NewsBloc();

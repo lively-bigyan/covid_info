@@ -1,7 +1,9 @@
-import 'package:corona_nepal/blocs/countries_bloc.dart';
-import 'package:corona_nepal/models/countryModel.dart';
-import 'package:corona_nepal/screens/countryStats.dart';
 import 'package:flutter/material.dart';
+
+import '../blocs/countries_bloc.dart';
+import '../locators.dart';
+import '../models/countryModel.dart';
+import 'countryStats.dart';
 
 class CountryList extends StatefulWidget {
   @override
@@ -11,8 +13,10 @@ class CountryList extends StatefulWidget {
 class _CountryListState extends State<CountryList> {
   bool enableFilter = false;
   String filter = "";
+  CountriesBloc countriesBloc;
   @override
   void initState() {
+    countriesBloc = locator<CountriesBloc>();
     super.initState();
     countriesBloc.getCountries();
   }
@@ -39,7 +43,8 @@ class _CountryListState extends State<CountryList> {
                   },
                 ),
               )
-            : Text('Global Cases', style: Theme.of(context).primaryTextTheme.headline),
+            : Text('Global Cases',
+                style: Theme.of(context).primaryTextTheme.headline5),
         actions: <Widget>[
           IconButton(
             icon: enableFilter ? Icon(Icons.clear) : Icon(Icons.search),
@@ -124,7 +129,7 @@ class _CountryListState extends State<CountryList> {
                 ),
                 Row(
                   children: <Widget>[
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     )
                   ],
@@ -147,7 +152,7 @@ class _CountryListState extends State<CountryList> {
                       padding: const EdgeInsets.all(20),
                       child: Text("${snapshot.data.error}"),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     RaisedButton(
                         color: Theme.of(context).primaryColor,
                         onPressed: () {

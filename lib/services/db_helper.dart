@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 
 class LocalApi {
-  Dio dio = Dio();
+  Dio dio = Dio(BaseOptions(
+    connectTimeout: 60000,
+    receiveTimeout: 60000,
+  ));
   final String _url = "https://nepalcorona.info/api/v1/";
   getData(apiUrl) async {
     var fullUrl = _url + apiUrl;
@@ -9,5 +12,10 @@ class LocalApi {
         options: Options(
           headers: {'Accept': 'application/json'},
         ));
+  }
+
+  getDataFromUrl(String apiUrl) async {
+    return await dio.get(apiUrl,
+        options: Options(headers: {'Accept': 'application/json'}));
   }
 }
