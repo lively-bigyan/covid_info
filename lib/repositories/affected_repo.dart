@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:corona_nepal/utils/widgets/handle_errors.dart';
 
 import '../models/nepalCases.dart';

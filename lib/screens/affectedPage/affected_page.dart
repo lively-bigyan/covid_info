@@ -1,6 +1,5 @@
 import 'package:corona_nepal/locators.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../blocs/affected_bloc.dart';
 import '../../models/nepalCases.dart';
@@ -13,7 +12,6 @@ class AffectedList extends StatefulWidget {
 }
 
 class _AffectedListState extends State<AffectedList> {
-  List<Marker> _markerlist = [];
   AffectedBloc affectedBloc;
   @override
   void initState() {
