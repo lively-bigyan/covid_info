@@ -13,7 +13,7 @@ class HospitalList extends StatefulWidget {
 class _HospitalListState extends State<HospitalList> {
   bool enableFilter = false;
   HospitalsBloc hospitalsBloc;
-  String filter = "";
+  String filter = '';
   @override
   void initState() {
     hospitalsBloc = locator<HospitalsBloc>();
@@ -50,7 +50,7 @@ class _HospitalListState extends State<HospitalList> {
             icon: enableFilter ? Icon(Icons.clear) : Icon(Icons.search),
             onPressed: () {
               setState(() {
-                filter = "";
+                filter = '';
                 enableFilter = !enableFilter;
               });
             },
@@ -75,14 +75,14 @@ class _HospitalListState extends State<HospitalList> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data.error != null &&
-                  snapshot.data.error.length > 0) {
+                  snapshot.data.error.isNotEmpty) {
                 return Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      child: Text("${snapshot.data.error}"),
+                      child: Text('${snapshot.data.error}'),
                     ),
                     const SizedBox(height: 20),
                     RaisedButton(
@@ -124,11 +124,11 @@ class _HospitalListState extends State<HospitalList> {
                                   ),
                                 ),
                                 subtitle: Text(
-                                  snapshot.data.data[i].phone == ""
-                                      ? "Contact: n/a"
-                                      : "Contact: " +
+                                  snapshot.data.data[i].phone == ''
+                                      ? 'Contact: n/a'
+                                      : 'Contact: ' +
                                           snapshot.data.data[i].phone
-                                              .replaceAll(",", ", "),
+                                              .replaceAll(',', ', '),
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyText2

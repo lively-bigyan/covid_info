@@ -9,9 +9,9 @@ class News {
   News({this.data, this.total, this.limit, this.start, this.page, this.error});
   News.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = new List<Data>();
+      data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data.add(Data.fromJson(v));
       });
     }
     total = json['total'];
@@ -28,14 +28,14 @@ class News {
     error = errorVal;
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data.map((v) => v.toJson()).toList();
     }
-    data['total'] = this.total;
-    data['limit'] = this.limit;
-    data['start'] = this.start;
-    data['page'] = this.page;
+    data['total'] = total;
+    data['limit'] = limit;
+    data['start'] = start;
+    data['page'] = page;
     return data;
   }
 }
@@ -78,17 +78,17 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['lang'] = this.lang;
-    data['url'] = this.url;
-    data['title'] = this.title;
-    data['source'] = this.source;
-    data['summary'] = this.summary;
-    data['image_url'] = this.imageUrl;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['__v'] = this.iV;
+    final data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['lang'] = lang;
+    data['url'] = url;
+    data['title'] = title;
+    data['source'] = source;
+    data['summary'] = summary;
+    data['image_url'] = imageUrl;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['__v'] = iV;
     return data;
   }
 }

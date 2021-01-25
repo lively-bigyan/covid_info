@@ -24,7 +24,7 @@ class _AffectedListState extends State<AffectedList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Affected In Nepal"),
+          title: Text('Affected In Nepal'),
           bottom: PreferredSize(
               child: ListTile(
                 dense: true,
@@ -44,14 +44,14 @@ class _AffectedListState extends State<AffectedList> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 if (snapshot.data.error != null &&
-                    snapshot.data.error.length > 0) {
+                    snapshot.data.error.isNotEmpty) {
                   return Center(
                       child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Padding(
                         padding: const EdgeInsets.all(20),
-                        child: Text("${snapshot.data.error}"),
+                        child: Text('${snapshot.data.error}'),
                       ),
                       const SizedBox(height: 20),
                       RaisedButton(
@@ -72,20 +72,20 @@ class _AffectedListState extends State<AffectedList> {
                     final data = snapshot.data.data[i];
                     return Container(
                       decoration: BoxDecoration(
-                          color: data.currentState == "recovered"
+                          color: data.currentState == 'recovered'
                               ? Colors.green[100]
                               : Colors.blue[100]),
                       child: ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Colors.blue[300],
-                            child: Text("${data.province}",
+                            child: Text('${data.province}',
                                 style: TextStyle(
                                   color: Colors.black,
                                 )),
                           ),
                           title: Text(
-                              "${(data.gender ?? "n/A").cap()}" +
-                                  " [${data.age}]",
+                              '${(data.gender ?? 'n/A').cap()}'
+                              '[${data.age}]',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText1

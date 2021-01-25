@@ -7,12 +7,12 @@ class FAQBloc {
   final FAQRepository _repository = FAQRepository();
   final BehaviorSubject<FAQ> _subject = BehaviorSubject<FAQ>();
 
-  getFAQ() async {
-    FAQ response = await _repository.getFAQ();
+  void getFAQ() async {
+    final response = await _repository.getFAQ();
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void dispose() {
     _subject.close();
   }
 

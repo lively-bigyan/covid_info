@@ -7,12 +7,12 @@ class StatsBloc {
   final StatsRepository _repository = StatsRepository();
   final BehaviorSubject<NepalStats> _subject = BehaviorSubject<NepalStats>();
 
-  getStats() async {
-    NepalStats response = await _repository.getStats();
+  void getStats() async {
+    final response = await _repository.getStats();
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void dispose() {
     _subject.close();
   }
 

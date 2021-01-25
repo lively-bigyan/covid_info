@@ -23,14 +23,14 @@ class _MythTabState extends State<MythTab> {
         stream: mythBloc.subject.stream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data.error != null && snapshot.data.error.length > 0) {
+            if (snapshot.data.error != null && snapshot.data.error.isNotEmpty) {
               return Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Text("${snapshot.data.error}"),
+                    child: Text('${snapshot.data.error}'),
                   ),
                   const SizedBox(height: 20),
                   RaisedButton(
@@ -63,7 +63,7 @@ class _MythTabState extends State<MythTab> {
                           const SizedBox(width: 5),
                           Expanded(
                             child: Text(
-                              myths.myth.replaceAll("\n", " "),
+                              myths.myth.replaceAll('\n', ' '),
                               style: Theme.of(context).textTheme.subtitle1,
                             ),
                           ),
@@ -77,7 +77,7 @@ class _MythTabState extends State<MythTab> {
                           const SizedBox(width: 5),
                           Expanded(
                             child: Text(
-                              myths.reality.replaceAll("\n", " "),
+                              myths.reality.replaceAll('\n', ' '),
                               style: Theme.of(context)
                                   .textTheme
                                   .subtitle1

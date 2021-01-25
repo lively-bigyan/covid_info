@@ -19,16 +19,16 @@ class AffectedDetails extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Text("Reported On: ",
+              Text('Reported On: ',
                   style: Theme.of(context).textTheme.subtitle1),
               Text(
                   (affected.reportedOn != null)
-                      ? DateFormat("MMMM d, y").format(
+                      ? DateFormat('MMMM d, y').format(
                           DateTime.parse(affected.reportedOn.toString()))
-                      : "---",
+                      : '---',
                   style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: 16,
-                      fontFamily: "Montserrat",
+                      fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold)),
             ],
           ),
@@ -44,7 +44,7 @@ class AffectedDetails extends StatelessWidget {
                       child: Text(affected.label,
                           style: Theme.of(context).textTheme.subtitle1.copyWith(
                               fontSize: 16,
-                              fontFamily: "Montserrat",
+                              fontFamily: 'Montserrat',
                               fontWeight: FontWeight.bold)))),
             ],
           ),
@@ -55,7 +55,7 @@ class AffectedDetails extends StatelessWidget {
               Text('Not disclosed',
                   style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: 16,
-                      fontFamily: "Montserrat",
+                      fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold))
             ],
           ),
@@ -70,7 +70,7 @@ class AffectedDetails extends StatelessWidget {
                   Text(affected.gender.cap(),
                       style: Theme.of(context).textTheme.subtitle1.copyWith(
                           fontSize: 16,
-                          fontFamily: "Montserrat",
+                          fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold)),
                 ],
               ),
@@ -81,7 +81,7 @@ class AffectedDetails extends StatelessWidget {
                   Text(affected.age.toString(),
                       style: Theme.of(context).textTheme.subtitle1.copyWith(
                           fontSize: 16,
-                          fontFamily: "Montserrat",
+                          fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold)),
                 ],
               )
@@ -98,10 +98,10 @@ class AffectedDetails extends StatelessWidget {
                       .subtitle1
                       .copyWith(
                           fontSize: 16,
-                          fontFamily: "Montserrat",
+                          fontFamily: 'Montserrat',
                           fontWeight: FontWeight.bold)
                       .copyWith(
-                          color: affected.currentState.toString() == "recovered"
+                          color: affected.currentState.toString() == 'recovered'
                               ? Colors.green
                               : Colors.orange)),
             ],

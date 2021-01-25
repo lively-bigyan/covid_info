@@ -14,7 +14,7 @@ class NewsList extends StatefulWidget {
 
 class _NewsListState extends State<NewsList> {
   NewsBloc newsBloc;
-  _launchURL(url) async {
+  Future<void> _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -40,14 +40,14 @@ class _NewsListState extends State<NewsList> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data.error != null &&
-                  snapshot.data.error.length > 0) {
+                  snapshot.data.error.isNotEmpty) {
                 return Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      child: Text("${snapshot.data.error}"),
+                      child: Text('${snapshot.data.error}'),
                     ),
                     const SizedBox(height: 20),
                     RaisedButton(
@@ -73,7 +73,7 @@ class _NewsListState extends State<NewsList> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  Text(DateFormat("d MMMM y").format(
+                                  Text(DateFormat('d MMMM y').format(
                                       DateTime.parse(
                                           snapshot.data.data[i].updatedAt)))
                                 ],
@@ -95,7 +95,7 @@ class _NewsListState extends State<NewsList> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: <Widget>[
-                                  Text("Source: "),
+                                  Text('Source: '),
                                   Text(
                                     snapshot.data.data[i].source,
                                     style: Theme.of(context)

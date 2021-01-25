@@ -15,10 +15,10 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
-    _darkTheme = (themeNotifier.getTheme() == darkTheme);
+    _darkTheme = (themeNotifier.getTheme == darkTheme);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings"),
+        title: Text('Settings'),
       ),
       body: ListView(
         children: <Widget>[

@@ -11,14 +11,14 @@ class CountryRepository {
       var response = await LocalApi().getData('data/world');
       var data = response.data;
       await SharedPreferences.getInstance().then((prefs) {
-        prefs.setString("all", jsonEncode(data));
+        prefs.setString('all', jsonEncode(data));
       });
       return AllCountries.fromJson(data);
     } catch (error, stacktrace) {
       var data;
-      print("Exception occured: $error stackTrace: $stacktrace");
+      print('Exception occured: $error stackTrace: $stacktrace');
       await SharedPreferences.getInstance().then((prefs) {
-        data = json.decode(prefs.getString("all"));
+        data = json.decode(prefs.getString('all'));
       });
       return AllCountries.fromJson(data);
     }

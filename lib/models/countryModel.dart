@@ -5,9 +5,9 @@ class AllCountries {
 
   AllCountries.fromJson(List<dynamic> json) {
     if (json != null) {
-      data = List<Countries>();
+      data = <Countries>[];
       json.forEach((v) {
-        data.add(new Countries.fromJson(v));
+        data.add(Countries.fromJson(v));
       });
     }
   }
@@ -55,17 +55,17 @@ class Countries {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['country'] = this.country;
-    data['totalCases'] = this.totalCases;
-    data['newCases'] = this.newCases;
-    data['totalDeaths'] = this.totalDeaths;
-    data['newDeaths'] = this.newDeaths;
-    data['activeCases'] = this.activeCases;
-    data['totalRecovered'] = this.totalRecovered;
-    data['criticalCases'] = this.criticalCases;
-    data['__v'] = this.iV;
+    final data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['country'] = country;
+    data['totalCases'] = totalCases;
+    data['newCases'] = newCases;
+    data['totalDeaths'] = totalDeaths;
+    data['newDeaths'] = newDeaths;
+    data['activeCases'] = activeCases;
+    data['totalRecovered'] = totalRecovered;
+    data['criticalCases'] = criticalCases;
+    data['__v'] = iV;
     return data;
   }
 }

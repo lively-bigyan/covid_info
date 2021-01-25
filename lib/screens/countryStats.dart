@@ -28,12 +28,12 @@ class _CountryStatsState extends State<CountryStats> {
                 ))),
       ),
       body: RefreshIndicator(
-        onRefresh: () => locator<CountriesBloc>().getCountries(),
+        onRefresh: () async => locator<CountriesBloc>().getCountries(),
         child: ListView(
           padding: EdgeInsets.all(20),
           children: <Widget>[
             CustomContainer(
-                title: "Total Cases",
+                title: 'Total Cases',
                 color: Colors.blueGrey[100],
                 textColor: Colors.blueGrey,
                 number: widget.country.totalCases.toString().addComma()),
@@ -44,7 +44,7 @@ class _CountryStatsState extends State<CountryStats> {
                 children: <Widget>[
                   Expanded(
                     child: CustomContainer(
-                        title: "Active Cases",
+                        title: 'Active Cases',
                         color: Colors.indigo[100],
                         textColor: Colors.indigo,
                         number:
@@ -55,7 +55,7 @@ class _CountryStatsState extends State<CountryStats> {
                     child: CustomContainer(
                       color: Colors.deepOrange[100],
                       textColor: Color(0xffF38460),
-                      title: "New Cases",
+                      title: 'New Cases',
                       number: widget.country.newCases.toString().addComma(),
                     ),
                   )
@@ -64,7 +64,7 @@ class _CountryStatsState extends State<CountryStats> {
             ),
             const SizedBox(height: 20),
             CustomContainer(
-              title: "Critical Cases",
+              title: 'Critical Cases',
               color: Colors.blue[100],
               textColor: Colors.blue,
               number: widget.country.criticalCases.toString().addComma(),
@@ -76,7 +76,7 @@ class _CountryStatsState extends State<CountryStats> {
                   children: <Widget>[
                     Expanded(
                       child: CustomContainer(
-                        title: "Total Deaths",
+                        title: 'Total Deaths',
                         color: Colors.red[100],
                         textColor: Colors.red[400],
                         number:
@@ -88,7 +88,7 @@ class _CountryStatsState extends State<CountryStats> {
                       child: CustomContainer(
                         color: Colors.red[100],
                         textColor: Colors.red[400],
-                        title: "New Deaths",
+                        title: 'New Deaths',
                         number: widget.country.newDeaths.toString().addComma(),
                       ),
                     )
@@ -98,7 +98,7 @@ class _CountryStatsState extends State<CountryStats> {
             CustomContainer(
               color: Colors.green[100],
               textColor: Colors.green,
-              title: "Total Recovered",
+              title: 'Total Recovered',
               number: widget.country.totalRecovered.toString().addComma(),
             ),
           ],

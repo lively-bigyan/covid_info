@@ -9,9 +9,9 @@ class Myths {
 
   Myths.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = new List<Data>();
+      data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data.add(Data.fromJson(v));
       });
     }
     total = json['total'];
@@ -24,14 +24,14 @@ class Myths {
     error = errorVal;
   }
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data.map((v) => v.toJson()).toList();
     }
-    data['total'] = this.total;
-    data['limit'] = this.limit;
-    data['start'] = this.start;
-    data['page'] = this.page;
+    data['total'] = total;
+    data['limit'] = limit;
+    data['start'] = start;
+    data['page'] = page;
     return data;
   }
 }
@@ -83,20 +83,20 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    data['type'] = this.type;
-    data['lang'] = this.lang;
-    data['myth'] = this.myth;
-    data['myth_np'] = this.mythNp;
-    data['reality'] = this.reality;
-    data['reality_np'] = this.realityNp;
-    data['image_url'] = this.imageUrl;
-    data['source_name'] = this.sourceName;
-    data['source_url'] = this.sourceUrl;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['__v'] = this.iV;
+    final data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['type'] = type;
+    data['lang'] = lang;
+    data['myth'] = myth;
+    data['myth_np'] = mythNp;
+    data['reality'] = reality;
+    data['reality_np'] = realityNp;
+    data['image_url'] = imageUrl;
+    data['source_name'] = sourceName;
+    data['source_url'] = sourceUrl;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['__v'] = iV;
     return data;
   }
 }

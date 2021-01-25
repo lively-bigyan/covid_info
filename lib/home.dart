@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
           appBar: AppBar(
             title: Text(
-              "Corona Update",
+              'Corona Update',
               style: Theme.of(context).primaryTextTheme.headline5,
             ),
             centerTitle: true,
@@ -48,9 +48,9 @@ class _HomePageState extends State<HomePage> {
               labelColor: Colors.white,
               tabs: [
                 Tab(
-                  text: "Nepal",
+                  text: 'Nepal',
                 ),
-                Tab(text: "World"),
+                Tab(text: 'World'),
               ],
             ),
           ),
@@ -62,14 +62,14 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       if (snapshot.data.error != null &&
-                          snapshot.data.error.length > 0) {
+                          snapshot.data.error.isNotEmpty) {
                         return Center(
                             child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(20),
-                              child: Text("${snapshot.data.error}"),
+                              child: Text('${snapshot.data.error}'),
                             ),
                             const SizedBox(height: 20),
                             RaisedButton(
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                         ));
                       }
                       return RefreshIndicator(
-                        onRefresh: () {
+                        onRefresh: () async {
                           return statsBloc.getStats();
                         },
                         child: ListView(
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const SizedBox(height: 10),
                             CustomContainer(
-                                title: "Total Tests",
+                                title: 'Total Tests',
                                 textColor: Colors.blueGrey,
                                 color: Colors.blueGrey[100],
                                 number: snapshot.data.testedTotal
@@ -125,7 +125,7 @@ class _HomePageState extends State<HomePage> {
                                   children: <Widget>[
                                     Expanded(
                                       child: CustomContainer(
-                                        title: "Tested Positive",
+                                        title: 'Tested Positive',
                                         color: Colors.indigo[100],
                                         textColor: Colors.indigo,
                                         number: snapshot.data.testedPositive
@@ -138,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                                       child: CustomContainer(
                                         color: Colors.indigo[100],
                                         textColor: Colors.indigo,
-                                        title: "Total Negative",
+                                        title: 'Total Negative',
                                         number: snapshot.data.testedNegative
                                             .toString()
                                             .addComma(),
@@ -150,7 +150,7 @@ class _HomePageState extends State<HomePage> {
                             CustomContainer(
                               color: Colors.red[100],
                               textColor: Colors.red,
-                              title: "Total Deaths",
+                              title: 'Total Deaths',
                               number:
                                   snapshot.data.deaths.toString().addComma(),
                             ),
@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Expanded(
                                     child: CustomContainer(
-                                      title: "In Isolation",
+                                      title: 'In Isolation',
                                       color: Colors.orange[100],
                                       textColor: Colors.orange,
                                       number: snapshot.data.inIsolation
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                                     child: CustomContainer(
                                       color: Colors.orange[100],
                                       textColor: Colors.orange,
-                                      title: "Pending\nResults",
+                                      title: 'Pending\nResults',
                                       number: snapshot.data.pendingResult
                                           .toString()
                                           .addComma(),
@@ -192,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   Expanded(
                                     child: CustomContainer(
-                                      title: "Total Recovered",
+                                      title: 'Total Recovered',
                                       color: Colors.green[100],
                                       textColor: Colors.green,
                                       number: snapshot.data.recovered
@@ -229,14 +229,14 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       if (snapshot.data.error != null &&
-                          snapshot.data.error.length > 0) {
+                          snapshot.data.error.isNotEmpty) {
                         return Center(
                             child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(20),
-                              child: Text("${snapshot.data.error}"),
+                              child: Text('${snapshot.data.error}'),
                             ),
                             const SizedBox(height: 20),
                             RaisedButton(
@@ -250,7 +250,7 @@ class _HomePageState extends State<HomePage> {
                         ));
                       }
                       return RefreshIndicator(
-                        onRefresh: () {
+                        onRefresh: () async {
                           return countriesBloc.getCountries();
                         },
                         child: ListView(
@@ -288,7 +288,7 @@ class _HomePageState extends State<HomePage> {
                                   children: <Widget>[
                                     Expanded(
                                       child: CustomContainer(
-                                          title: "Total Cases",
+                                          title: 'Total Cases',
                                           textColor: Colors.blueGrey,
                                           color: Colors.blueGrey[100],
                                           number: snapshot
@@ -308,7 +308,7 @@ class _HomePageState extends State<HomePage> {
                                     children: <Widget>[
                                       Expanded(
                                         child: CustomContainer(
-                                            title: "Active Cases",
+                                            title: 'Active Cases',
                                             textColor: Colors.indigo,
                                             color: Colors.indigo[100],
                                             number: snapshot
@@ -321,7 +321,7 @@ class _HomePageState extends State<HomePage> {
                                         child: CustomContainer(
                                           color: Colors.indigo[100],
                                           textColor: Colors.indigo,
-                                          title: "New Cases",
+                                          title: 'New Cases',
                                           number: snapshot.data.data[0].newCases
                                               .toString()
                                               .addComma(),
@@ -334,7 +334,7 @@ class _HomePageState extends State<HomePage> {
                                 CustomContainer(
                                   color: Colors.blue[100],
                                   textColor: Colors.blue,
-                                  title: "Critical Cases",
+                                  title: 'Critical Cases',
                                   number: snapshot.data.data[0].criticalCases
                                       .toString()
                                       .addComma(),
@@ -347,7 +347,7 @@ class _HomePageState extends State<HomePage> {
                                       children: <Widget>[
                                         Expanded(
                                           child: CustomContainer(
-                                            title: "Total Deaths",
+                                            title: 'Total Deaths',
                                             color: Colors.red[100],
                                             textColor: Colors.red,
                                             number: snapshot
@@ -361,7 +361,7 @@ class _HomePageState extends State<HomePage> {
                                           child: CustomContainer(
                                             color: Colors.red[100],
                                             textColor: Colors.red,
-                                            title: "New Deaths",
+                                            title: 'New Deaths',
                                             number: snapshot
                                                 .data.data[0].newDeaths
                                                 .toString()
@@ -376,7 +376,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Expanded(
                                       child: CustomContainer(
-                                        title: "Total Recovered",
+                                        title: 'Total Recovered',
                                         color: Colors.green[100],
                                         textColor: Colors.green,
                                         number: snapshot

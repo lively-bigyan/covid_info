@@ -23,7 +23,7 @@ class CustomTableRow extends StatelessWidget {
           Expanded(
               flex: 4,
               child: Center(
-                child: Text((right == "") ? "n/a" : right),
+                child: Text((right == '') ? 'n/a' : right),
               )),
         ],
       ),

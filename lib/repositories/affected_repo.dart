@@ -12,7 +12,7 @@ class AffectedRepository {
       print(data);
       return AffectedInNepal.fromJson(data);
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      print('Exception occured: $error stackTrace: $stacktrace');
       return AffectedInNepal.withError(handleError(error));
     }
   }

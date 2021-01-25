@@ -11,14 +11,14 @@ class PreventionTab extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("1. ",
+            Text('1. ',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
                     .copyWith(fontWeight: FontWeight.bold)),
             Expanded(
               child: Text(
-                  "Wash your hands regularly with soap and water, or clean them with alcohol-based hand rub.",
+                  'Wash your hands regularly with soap and water, or clean them with alcohol-based hand rub.',
                   style: Theme.of(context).accentTextTheme.subtitle1),
             ),
           ],
@@ -27,14 +27,14 @@ class PreventionTab extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("2. ",
+            Text('2. ',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
                     .copyWith(fontWeight: FontWeight.bold)),
             Expanded(
               child: Text(
-                  "Maintain at least 1 metre distance between you and people coughing or sneezing.",
+                  'Maintain at least 1 metre distance between you and people coughing or sneezing.',
                   style: Theme.of(context).accentTextTheme.subtitle1),
             ),
           ],
@@ -43,13 +43,13 @@ class PreventionTab extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("3. ",
+            Text('3. ',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
                     .copyWith(fontWeight: FontWeight.bold)),
             Expanded(
-              child: Text("Avoid touching your face.",
+              child: Text('Avoid touching your face.',
                   style: Theme.of(context).accentTextTheme.subtitle1),
             ),
           ],
@@ -58,45 +58,14 @@ class PreventionTab extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("4. ",
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    .copyWith(fontWeight: FontWeight.bold)),
-            Expanded(
-              child: Text(
-                  "Cover your mouth and nose when coughing or sneezing.",
-                  style: Theme.of(context).accentTextTheme.subtitle1),
-            ),
-          ],
-        ),
-        const SizedBox(height: 2),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("5. ",
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    .copyWith(fontWeight: FontWeight.bold)),
-            Expanded(
-              child: Text("Stay home if you feel unwell.",
-                  style: Theme.of(context).accentTextTheme.subtitle1),
-            ),
-          ],
-        ),
-        const SizedBox(height: 2),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text("6. ",
+            Text('4. ',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
                     .copyWith(fontWeight: FontWeight.bold)),
             Expanded(
               child: Text(
-                  "Refrain from smoking and other activities that weaken the lungs.",
+                  'Cover your mouth and nose when coughing or sneezing.',
                   style: Theme.of(context).accentTextTheme.subtitle1),
             ),
           ],
@@ -105,14 +74,45 @@ class PreventionTab extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text("7. ",
+            Text('5. ',
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    .copyWith(fontWeight: FontWeight.bold)),
+            Expanded(
+              child: Text('Stay home if you feel unwell.',
+                  style: Theme.of(context).accentTextTheme.subtitle1),
+            ),
+          ],
+        ),
+        const SizedBox(height: 2),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('6. ',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle1
                     .copyWith(fontWeight: FontWeight.bold)),
             Expanded(
               child: Text(
-                  "Practice physical distancing by avoiding unnecessary travel and staying away from large groups of people.",
+                  'Refrain from smoking and other activities that weaken the lungs.',
+                  style: Theme.of(context).accentTextTheme.subtitle1),
+            ),
+          ],
+        ),
+        const SizedBox(height: 2),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text('7. ',
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle1
+                    .copyWith(fontWeight: FontWeight.bold)),
+            Expanded(
+              child: Text(
+                  'Practice physical distancing by avoiding unnecessary travel and staying away from large groups of people.',
                   style: Theme.of(context).accentTextTheme.subtitle1),
             ),
           ],

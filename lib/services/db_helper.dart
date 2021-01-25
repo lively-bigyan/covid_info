@@ -5,8 +5,8 @@ class LocalApi {
     connectTimeout: 60000,
     receiveTimeout: 60000,
   ));
-  final String _url = "https://nepalcorona.info/api/v1/";
-  getData(apiUrl) async {
+  final String _url = 'https://nepalcorona.info/api/v1/';
+  Future<Response> getData(apiUrl) async {
     var fullUrl = _url + apiUrl;
     return await dio.get(fullUrl,
         options: Options(
@@ -14,7 +14,7 @@ class LocalApi {
         ));
   }
 
-  getDataFromUrl(String apiUrl) async {
+  Future<Response> getDataFromUrl(String apiUrl) async {
     return await dio.get(apiUrl,
         options: Options(headers: {'Accept': 'application/json'}));
   }

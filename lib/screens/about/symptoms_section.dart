@@ -10,14 +10,14 @@ class SymptomsTab extends StatelessWidget {
           height: 10,
         ),
         Text(
-            "Patients start to show symptoms within 2-14 days if infected. " +
-                "In rare cases, symptoms can surface after 21 days too.",
+            'Patients start to show symptoms within 2-14 days if infected. '
+            'In rare cases, symptoms can surface after 21 days too.',
             style: Theme.of(context).textTheme.subtitle1),
         const SizedBox(
           height: 16,
         ),
         Text('Common Symptoms:', style: Theme.of(context).textTheme.headline6),
-        Text('1. ' + 'Fever', style: Theme.of(context).textTheme.subtitle1),
+        Text('1. Fever', style: Theme.of(context).textTheme.subtitle1),
         Text('2. Cough [Dry]', style: Theme.of(context).textTheme.subtitle1),
         Text('3. Tiredness/Fatigue',
             style: Theme.of(context).textTheme.subtitle1),

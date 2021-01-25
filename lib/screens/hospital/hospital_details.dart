@@ -25,7 +25,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
               background: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: (widget.hospital.imageUrl == "")
+                    image: (widget.hospital.imageUrl == '')
                         ? AssetImage('assets/hospital.jpg')
                         : NetworkImage(widget.hospital.imageUrl),
                     fit: BoxFit.cover,
@@ -70,11 +70,11 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                   Row(
                     children: <Widget>[
                       Icon(SFSymbols.building_2_fill),
-                      Text("Address: ",
+                      Text('Address: ',
                           style: Theme.of(context).textTheme.subtitle1),
                       Text(
-                        (widget.hospital.address == "")
-                            ? "Not available"
+                        (widget.hospital.address == '')
+                            ? 'Not available'
                             : widget.hospital.address,
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
@@ -83,7 +83,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Text("Contacts: ",
+                  Text('Contacts: ',
                       style: Theme.of(context).textTheme.subtitle1),
                   Row(
                     children: <Widget>[
@@ -92,7 +92,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                       const SizedBox(width: 10),
                       Expanded(
                           child: Text(
-                              widget.hospital.phone.replaceAll(",", ", "),
+                              widget.hospital.phone.replaceAll(',', ', '),
                               style: Theme.of(context).textTheme.headline6)),
                     ],
                   ),
@@ -101,7 +101,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                   ),
                   Row(
                     children: <Widget>[
-                      Text("Province: ",
+                      Text('Province: ',
                           style: Theme.of(context).textTheme.subtitle1),
                       Text(
                         widget.hospital.state,
@@ -121,7 +121,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                   const SizedBox(
                     height: 10,
                   ),
-                  (widget.hospital.contactPerson != "")
+                  (widget.hospital.contactPerson != '')
                       ? Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -150,37 +150,37 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                     child: Column(
                       children: <Widget>[
                         CustomTableRow(
-                          left: "Beds",
+                          left: 'Beds',
                           right: widget.hospital.capacity.beds,
                         ),
                         Divider(
                           height: 4,
                         ),
                         CustomTableRow(
-                          left: "Ventilators",
+                          left: 'Ventilators',
                           right: widget.hospital.capacity.ventilators,
                         ),
                         Divider(
                           height: 4,
                         ),
                         CustomTableRow(
-                          left: "Isolation Beds",
+                          left: 'Isolation Beds',
                           right: widget.hospital.capacity.isolationBeds,
                         ),
                         Divider(
                           height: 4,
                         ),
                         CustomTableRow(
-                          left: "Occupied Beds",
+                          left: 'Occupied Beds',
                           right: widget.hospital.capacity.occupiedBeds,
                         ),
                         Divider(height: 4),
                         CustomTableRow(
-                            left: "Doctors",
+                            left: 'Doctors',
                             right: widget.hospital.capacity.doctors),
                         Divider(height: 4),
                         CustomTableRow(
-                            left: "Nurses",
+                            left: 'Nurses',
                             right: widget.hospital.capacity.nurses),
                       ],
                     ),

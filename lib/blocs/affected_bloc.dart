@@ -8,12 +8,12 @@ class AffectedBloc {
   final BehaviorSubject<AffectedInNepal> _subject =
       BehaviorSubject<AffectedInNepal>();
 
-  getAffected() async {
-    AffectedInNepal response = await _repository.getAffected();
+  void getAffected() async {
+    final response = await _repository.getAffected();
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void dispose() {
     _subject.close();
   }
 

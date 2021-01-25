@@ -10,7 +10,7 @@ class MythRepository {
       var data = response.data;
       return Myths.fromJson(data);
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      print('Exception occured: $error stackTrace: $stacktrace');
       return Myths.withError(handleError(error));
     }
   }

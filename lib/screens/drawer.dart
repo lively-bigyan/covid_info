@@ -8,14 +8,14 @@ import 'credits.dart';
 import 'hospital/hospital_list.dart';
 import 'news_list.dart';
 
-makeDrawer(context) {
+Drawer makeDrawer(context) {
   return Drawer(
     child: Stack(
       children: <Widget>[
         Container(
           child: FlareActor(
-            "assets/Liquid.flr",
-            animation: "Liquid",
+            'assets/Liquid.flr',
+            animation: 'Liquid',
             fit: BoxFit.fill,
             color: Theme.of(context).primaryColor,
             alignment: Alignment.center,
@@ -24,7 +24,7 @@ makeDrawer(context) {
         Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("COVID-19 INFO",
+            Text('COVID-19 INFO',
                 style: Theme.of(context)
                     .textTheme
                     .headline4
@@ -37,7 +37,7 @@ makeDrawer(context) {
               dense: true,
               leading: Icon(Icons.flag, color: Colors.indigo),
               title: Text(
-                "Global Cases",
+                'Global Cases',
                 style: Theme.of(context).accentTextTheme.headline6,
               ),
               onTap: () {
@@ -51,7 +51,7 @@ makeDrawer(context) {
               dense: true,
               leading: Icon(Icons.local_hospital, color: Colors.red),
               title: Text(
-                "Hospitals",
+                'Hospitals',
                 style: Theme.of(context).accentTextTheme.headline6,
               ),
               onTap: () {
@@ -68,7 +68,7 @@ makeDrawer(context) {
                 color: Colors.blue,
               ),
               title: Text(
-                "News",
+                'News',
                 style: Theme.of(context).accentTextTheme.headline6,
               ),
               onTap: () {
@@ -85,7 +85,7 @@ makeDrawer(context) {
                 color: Colors.orange,
               ),
               title: Text(
-                "Affected List",
+                'Affected List',
                 style: Theme.of(context).accentTextTheme.headline6,
               ),
               onTap: () {
@@ -99,7 +99,7 @@ makeDrawer(context) {
                     EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                 dense: true,
                 leading: Icon(Icons.info_outline, color: Colors.black54),
-                title: Text("About Covid-19",
+                title: Text('About Covid-19',
                     style: Theme.of(context).accentTextTheme.headline6),
                 onTap: () {
                   Navigator.pop(context);
@@ -113,7 +113,7 @@ makeDrawer(context) {
                 leading:
                     Icon(Icons.perm_device_information, color: Colors.blueGrey),
                 title: Text(
-                  "Credits",
+                  'Credits',
                   style: Theme.of(context).accentTextTheme.headline6,
                 ),
                 onTap: () {

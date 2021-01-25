@@ -35,26 +35,26 @@ class NepalStats {
     source = json['source'];
     updatedAt = json['updated_at'];
     latestSitReport = json['latest_sit_report'] != null
-        ? new LatestSitReport.fromJson(json['latest_sit_report'])
+        ? LatestSitReport.fromJson(json['latest_sit_report'])
         : null;
   }
   NepalStats.withError(String errorVal) {
-    error=errorVal;
+    error = errorVal;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['tested_positive'] = this.testedPositive;
-    data['tested_negative'] = this.testedNegative;
-    data['tested_total'] = this.testedTotal;
-    data['in_isolation'] = this.inIsolation;
-    data['pending_result'] = this.pendingResult;
-    data['recovered'] = this.recovered;
-    data['deaths'] = this.deaths;
-    data['source'] = this.source;
-    data['updated_at'] = this.updatedAt;
-    if (this.latestSitReport != null) {
-      data['latest_sit_report'] = this.latestSitReport.toJson();
+    final data = <String, dynamic>{};
+    data['tested_positive'] = testedPositive;
+    data['tested_negative'] = testedNegative;
+    data['tested_total'] = testedTotal;
+    data['in_isolation'] = inIsolation;
+    data['pending_result'] = pendingResult;
+    data['recovered'] = recovered;
+    data['deaths'] = deaths;
+    data['source'] = source;
+    data['updated_at'] = updatedAt;
+    if (latestSitReport != null) {
+      data['latest_sit_report'] = latestSitReport.toJson();
     }
     return data;
   }
@@ -92,15 +92,15 @@ class LatestSitReport {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['_id'] = this.sId;
-    data['no'] = this.no;
-    data['date'] = this.date;
-    data['url'] = this.url;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['__v'] = this.iV;
+    final data = <String, dynamic>{};
+    data['type'] = type;
+    data['_id'] = sId;
+    data['no'] = no;
+    data['date'] = date;
+    data['url'] = url;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['__v'] = iV;
     return data;
   }
 }

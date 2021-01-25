@@ -7,12 +7,12 @@ class HospitalsBloc {
   final HospitalRepository _repository = HospitalRepository();
   final BehaviorSubject<Hospitals> _subject = BehaviorSubject<Hospitals>();
 
-  getHospitals() async {
-    Hospitals response = await _repository.getHospitals();
+  void getHospitals() async {
+    final response = await _repository.getHospitals();
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void dispose() {
     _subject.close();
   }
 

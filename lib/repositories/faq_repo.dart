@@ -11,14 +11,14 @@ class FAQRepository {
       var response = await LocalApi().getData('faqs');
       var data = response.data;
       await SharedPreferences.getInstance().then((prefs) {
-        prefs.setString("faq", jsonEncode(data));
+        prefs.setString('faq', jsonEncode(data));
       });
       return FAQ.fromJson(data);
     } catch (error, stacktrace) {
       var data;
-      print("Exception occured: $error stackTrace: $stacktrace");
+      print('Exception occured: $error stackTrace: $stacktrace');
       await SharedPreferences.getInstance().then((prefs) {
-        data = json.decode(prefs.getString("faq"));
+        data = json.decode(prefs.getString('faq'));
       });
       return FAQ.fromJson(data);
     }

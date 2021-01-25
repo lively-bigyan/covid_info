@@ -12,7 +12,7 @@ class CountryList extends StatefulWidget {
 
 class _CountryListState extends State<CountryList> {
   bool enableFilter = false;
-  String filter = "";
+  String filter = '';
   CountriesBloc countriesBloc;
   @override
   void initState() {
@@ -50,7 +50,7 @@ class _CountryListState extends State<CountryList> {
             icon: enableFilter ? Icon(Icons.clear) : Icon(Icons.search),
             onPressed: () {
               setState(() {
-                filter = "";
+                filter = '';
                 enableFilter = !enableFilter;
               });
             },
@@ -79,7 +79,7 @@ class _CountryListState extends State<CountryList> {
                       decoration: BoxDecoration(color: Colors.red[300]),
                     ),
                     Text(
-                      "  > 100,000",
+                      '  > 100,000',
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -92,7 +92,7 @@ class _CountryListState extends State<CountryList> {
                       decoration: BoxDecoration(color: Colors.orange[300]),
                     ),
                     Text(
-                      "  > 10,000",
+                      '  > 10,000',
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -104,7 +104,7 @@ class _CountryListState extends State<CountryList> {
                       width: 20,
                       decoration: BoxDecoration(color: Colors.blue[200]),
                     ),
-                    Text("  > 1,000", style: TextStyle(color: Colors.white)),
+                    Text('  > 1,000', style: TextStyle(color: Colors.white)),
                   ],
                 ),
                 Wrap(
@@ -114,7 +114,7 @@ class _CountryListState extends State<CountryList> {
                       width: 20,
                       decoration: BoxDecoration(color: Colors.green[100]),
                     ),
-                    Text("  > 100", style: TextStyle(color: Colors.white)),
+                    Text('  > 100', style: TextStyle(color: Colors.white)),
                   ],
                 ),
                 Wrap(
@@ -124,7 +124,7 @@ class _CountryListState extends State<CountryList> {
                       width: 20,
                       decoration: BoxDecoration(color: Colors.white),
                     ),
-                    Text("  < 100", style: TextStyle(color: Colors.white)),
+                    Text('  < 100', style: TextStyle(color: Colors.white)),
                   ],
                 ),
                 Row(
@@ -143,14 +143,14 @@ class _CountryListState extends State<CountryList> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data.error != null &&
-                  snapshot.data.error.length > 0) {
+                  snapshot.data.error.isNotEmpty) {
                 return Center(
                     child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(20),
-                      child: Text("${snapshot.data.error}"),
+                      child: Text('${snapshot.data.error}'),
                     ),
                     const SizedBox(height: 20),
                     RaisedButton(
@@ -171,7 +171,7 @@ class _CountryListState extends State<CountryList> {
                     return (snapshot.data.data[i].country
                                 .toLowerCase()
                                 .contains(filter.toLowerCase()) &&
-                            snapshot.data.data[i].country != "")
+                            snapshot.data.data[i].country != '')
                         ? Container(
                             decoration: BoxDecoration(
                                 color: (snapshot.data.data[i].totalCases >

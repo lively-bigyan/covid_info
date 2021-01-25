@@ -8,7 +8,7 @@ import 'package:corona_nepal/blocs/news_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final locator = GetIt.instance;
-setupLocators() {
+void setupLocators() {
   locator.registerSingleton<CountriesBloc>(CountriesBloc());
   locator.registerSingleton<HospitalsBloc>(HospitalsBloc());
   locator.registerSingleton<FAQBloc>(FAQBloc());

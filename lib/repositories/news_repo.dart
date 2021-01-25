@@ -10,7 +10,7 @@ class NewsRepository {
       var data = response.data;
       return News.fromJson(data);
     } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
+      print('Exception occured: $error stackTrace: $stacktrace');
       return News.withError(handleError(error));
     }
   }

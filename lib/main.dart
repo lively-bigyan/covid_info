@@ -10,8 +10,8 @@ import 'initScreen.dart';
 import 'providers/theme_notifier.dart';
 
 final _assetsToWarmup = [
-  AssetFlare(bundle: rootBundle, name: "assets/Liquid.flr"),
-  AssetFlare(bundle: rootBundle, name: "assets/loading.flr")
+  AssetFlare(bundle: rootBundle, name: 'assets/Liquid.flr'),
+  AssetFlare(bundle: rootBundle, name: 'assets/loading.flr')
 ];
 
 Future<void> warmupFlare() async {
@@ -45,14 +45,14 @@ class MyApp extends StatelessWidget {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
     return GestureDetector(
         onTap: () {
-          FocusScopeNode currentFocus = FocusScope.of(context);
+          final currentFocus = FocusScope.of(context);
           if (!currentFocus.hasPrimaryFocus) {
             currentFocus.unfocus();
           }
         },
         child: MaterialApp(
-          title: "Corona Nepal",
-          theme: themeNotifier.getTheme(),
+          title: 'Corona Nepal',
+          theme: themeNotifier.getTheme,
           home: InitScreen(),
           debugShowCheckedModeBanner: false,
         ));

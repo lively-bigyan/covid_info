@@ -24,14 +24,14 @@ class _FAQTabState extends State<FAQTab> {
         stream: faqBloc.subject.stream,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data.error != null && snapshot.data.error.length > 0) {
+            if (snapshot.data.error != null && snapshot.data.error.isNotEmpty) {
               return Center(
                   child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(20),
-                    child: Text("${snapshot.data.error}"),
+                    child: Text('${snapshot.data.error}'),
                   ),
                   const SizedBox(height: 20),
                   RaisedButton(
@@ -88,8 +88,8 @@ class _FAQTabState extends State<FAQTab> {
                               Expanded(
                                 child: Text(
                                   _isNepali
-                                      ? "${faq.questionNp ?? "---"}"
-                                      : "${faq.question}",
+                                      ? '${faq.questionNp ?? '---'}'
+                                      : '${faq.question}',
                                   style: Theme.of(context)
                                       .accentTextTheme
                                       .subtitle1
@@ -105,9 +105,9 @@ class _FAQTabState extends State<FAQTab> {
                             padding: const EdgeInsets.only(left: 20.0),
                             child: Text(
                               (_isNepali
-                                      ? "${faq.answerNp ?? "---"}"
-                                      : "${faq.answer}")
-                                  .replaceAll("\n", " "),
+                                      ? '${faq.answerNp ?? '---'}'
+                                      : '${faq.answer}')
+                                  .replaceAll('\n', ' '),
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText1

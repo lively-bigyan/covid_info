@@ -11,7 +11,7 @@ class AboutCov extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("About COVID-19"),
+          title: Text('About COVID-19'),
           bottom: TabBar(
             isScrollable: true,
             labelStyle: Theme.of(context)
@@ -23,10 +23,10 @@ class AboutCov extends StatelessWidget {
             unselectedLabelColor: Colors.grey[400],
             labelColor: Colors.white,
             tabs: [
-              Tab(text: "Symptoms"),
-              Tab(text: "Prevention"),
-              Tab(text: "FAQ"),
-              Tab(text: "Myths/Reality"),
+              Tab(text: 'Symptoms'),
+              Tab(text: 'Prevention'),
+              Tab(text: 'FAQ'),
+              Tab(text: 'Myths/Reality'),
             ],
           ),
         ),

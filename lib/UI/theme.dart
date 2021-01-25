@@ -14,12 +14,12 @@ final darkTheme = ThemeData(
         headline5: TextStyle(
             fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
         headline6: TextStyle(
-            fontFamily: "OpenSans",
+            fontFamily: 'OpenSans',
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Color(0xff4a4a4a)),
         subtitle1: TextStyle(
-            fontFamily: "OpenSans", fontSize: 16, fontWeight: FontWeight.w500),
+            fontFamily: 'OpenSans', fontSize: 16, fontWeight: FontWeight.w500),
         subtitle2: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
         bodyText1: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
         bodyText2: TextStyle(fontSize: 12)),
@@ -31,7 +31,7 @@ final darkTheme = ThemeData(
 final lightTheme = ThemeData(
   bottomAppBarTheme: BottomAppBarTheme(
       color: Colors.white, elevation: 6, shape: CircularNotchedRectangle()),
-  fontFamily: "Montserrat",
+  fontFamily: 'Montserrat',
   scaffoldBackgroundColor: Color(0xffF4F6FC),
   primaryColor: Color(0xff0061A5),
   accentColor: Color(0xff333B6D),
@@ -40,20 +40,20 @@ final lightTheme = ThemeData(
   canvasColor: Colors.grey[200],
   buttonColor: Colors.grey[300],
   cardColor: Colors.white,
-  primaryTextTheme: Typography.whiteMountainView.apply(fontFamily: "Abel"),
+  primaryTextTheme: Typography.whiteMountainView.apply(fontFamily: 'Abel'),
   accentTextTheme: Typography.blackMountainView.apply(fontFamily: 'Abel'),
   textTheme: Typography.blackMountainView.apply(fontFamily: 'Abel').copyWith(
       headline5: TextStyle(
           fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
       headline6: TextStyle(
-          fontFamily: "OpenSans",
+          fontFamily: 'OpenSans',
           fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Color(0xff4a4a4a)),
       subtitle1: TextStyle(
-          fontFamily: "OpenSans", fontSize: 16, fontWeight: FontWeight.w500),
+          fontFamily: 'OpenSans', fontSize: 16, fontWeight: FontWeight.w500),
       subtitle2: TextStyle(fontSize: 14, color: Color(0xff4a4a4a))
-          .copyWith(fontFamily: "Abel"),
+          .copyWith(fontFamily: 'Abel'),
       bodyText1: TextStyle(fontSize: 14, color: Color(0xff4a4a4a)),
       bodyText2: TextStyle(fontSize: 12)),
 );

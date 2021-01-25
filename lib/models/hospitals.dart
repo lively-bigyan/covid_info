@@ -11,9 +11,9 @@ class Hospitals {
 
   Hospitals.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = new List<Data>();
+      data = <Data>[];
       json['data'].forEach((v) {
-        data.add(new Data.fromJson(v));
+        data.add(Data.fromJson(v));
       });
     }
     total = json['total'];
@@ -31,14 +31,14 @@ class Hospitals {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data.map((v) => v.toJson()).toList();
     }
-    data['total'] = this.total;
-    data['limit'] = this.limit;
-    data['start'] = this.start;
-    data['page'] = this.page;
+    data['total'] = total;
+    data['limit'] = limit;
+    data['start'] = start;
+    data['page'] = page;
     return data;
   }
 }
@@ -89,9 +89,8 @@ class Data {
 
   Data.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
-    location = json['location'] != null
-        ? new Location.fromJson(json['location'])
-        : null;
+    location =
+        json['location'] != null ? Location.fromJson(json['location']) : null;
     isFull = json['is_full'];
     governmentApproved = json['government_approved'];
     name = json['name'];
@@ -106,40 +105,39 @@ class Data {
     state = json['state'];
     imageUrl = json['image_url'];
     source = json['source'];
-    capacity = json['capacity'] != null
-        ? new Capacity.fromJson(json['capacity'])
-        : null;
+    capacity =
+        json['capacity'] != null ? Capacity.fromJson(json['capacity']) : null;
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['_id'] = this.sId;
-    if (this.location != null) {
-      data['location'] = this.location.toJson();
+    final data = <String, dynamic>{};
+    data['_id'] = sId;
+    if (location != null) {
+      data['location'] = location.toJson();
     }
-    data['is_full'] = this.isFull;
-    data['government_approved'] = this.governmentApproved;
-    data['name'] = this.name;
-    data['contact_person'] = this.contactPerson;
-    data['contact_person_number'] = this.contactPersonNumber;
-    data['address'] = this.address;
-    data['phone'] = this.phone;
-    data['website'] = this.website;
-    data['email'] = this.email;
-    data['notes'] = this.notes;
-    data['hospital_id'] = this.hospitalId;
-    data['state'] = this.state;
-    data['image_url'] = this.imageUrl;
-    data['source'] = this.source;
-    if (this.capacity != null) {
-      data['capacity'] = this.capacity.toJson();
+    data['is_full'] = isFull;
+    data['government_approved'] = governmentApproved;
+    data['name'] = name;
+    data['contact_person'] = contactPerson;
+    data['contact_person_number'] = contactPersonNumber;
+    data['address'] = address;
+    data['phone'] = phone;
+    data['website'] = website;
+    data['email'] = email;
+    data['notes'] = notes;
+    data['hospital_id'] = hospitalId;
+    data['state'] = state;
+    data['image_url'] = imageUrl;
+    data['source'] = source;
+    if (capacity != null) {
+      data['capacity'] = capacity.toJson();
     }
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['__v'] = this.iV;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['__v'] = iV;
     return data;
   }
 }
@@ -156,9 +154,9 @@ class Location {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['type'] = this.type;
-    data['coordinates'] = this.coordinates;
+    final data = <String, dynamic>{};
+    data['type'] = type;
+    data['coordinates'] = coordinates;
     return data;
   }
 }
@@ -189,13 +187,13 @@ class Capacity {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['beds'] = this.beds;
-    data['ventilators'] = this.ventilators;
-    data['isolation_beds'] = this.isolationBeds;
-    data['occupied_beds'] = this.occupiedBeds;
-    data['doctors'] = this.doctors;
-    data['nurses'] = this.nurses;
+    final data = <String, dynamic>{};
+    data['beds'] = beds;
+    data['ventilators'] = ventilators;
+    data['isolation_beds'] = isolationBeds;
+    data['occupied_beds'] = occupiedBeds;
+    data['doctors'] = doctors;
+    data['nurses'] = nurses;
     return data;
   }
 }

@@ -11,14 +11,14 @@ class HospitalRepository {
       var response = await LocalApi().getData('hospitals');
       var data = response.data;
       await SharedPreferences.getInstance().then((prefs) {
-        prefs.setString("hospitals", jsonEncode(data));
+        prefs.setString('hospitals', jsonEncode(data));
       });
       return Hospitals.fromJson(data);
     } catch (error, stacktrace) {
       var data;
-      print("Exception occured: $error stackTrace: $stacktrace");
+      print('Exception occured: $error stackTrace: $stacktrace');
       await SharedPreferences.getInstance().then((prefs) {
-        data = json.decode(prefs.getString("hospitals"));
+        data = json.decode(prefs.getString('hospitals'));
       });
       return Hospitals.fromJson(data);
     }

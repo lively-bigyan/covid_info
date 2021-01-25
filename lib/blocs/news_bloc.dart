@@ -7,12 +7,12 @@ class NewsBloc {
   final NewsRepository _repository = NewsRepository();
   final BehaviorSubject<News> _subject = BehaviorSubject<News>();
 
-  getNews() async {
-    News response = await _repository.getNews();
+  void getNews() async {
+    final response = await _repository.getNews();
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void dispose() {
     _subject.close();
   }
 

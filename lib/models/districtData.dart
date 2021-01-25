@@ -5,9 +5,9 @@ class AllCountries {
 
   AllCountries.fromJson(List<dynamic> json) {
     if (json != null) {
-      data = List<District>();
+      data = <District>[];
       json.forEach((v) {
-        data.add(new District.fromJson(v));
+        data.add(District.fromJson(v));
       });
     }
   }
@@ -16,7 +16,6 @@ class AllCountries {
     error = errorVal;
   }
 }
-
 
 class District {
   String district;
@@ -47,14 +46,14 @@ class District {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['District'] = this.district;
-    data['Zone'] = this.zone;
-    data['Geographical Region'] = this.geographicalRegion;
-    data['Region'] = this.region;
-    data['District_code'] = this.districtCode;
-    data['VDC_name'] = this.vDCName;
-    data['VDC_code'] = this.vDCCode;
+    final data = <String, dynamic>{};
+    data['District'] = district;
+    data['Zone'] = zone;
+    data['Geographical Region'] = geographicalRegion;
+    data['Region'] = region;
+    data['District_code'] = districtCode;
+    data['VDC_name'] = vDCName;
+    data['VDC_code'] = vDCCode;
     return data;
   }
 }

@@ -6,9 +6,9 @@ class AffectedInNepal {
 
   AffectedInNepal.fromJson(List<dynamic> json) {
     if (json != null) {
-      data = new List<Data>();
+      data = <Data>[];
       json.forEach((v) {
-        Data jsonToData = Data.fromJson(v);
+        final jsonToData = Data.fromJson(v);
         data.add(jsonToData);
       });
     }
@@ -69,28 +69,28 @@ class Data {
   List<dynamic> relatedTo;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        id: json["id"],
-        province: json["province"],
-        district: json["district"],
-        municipality: json["municipality"],
-        createdOn: json["createdOn"],
-        modifiedOn: json["modifiedOn"],
-        label: json["label"],
-        gender: json["gender"],
-        age: json["age"],
-        point: Point.fromJson(json["point"]),
-        occupation: json["occupation"],
-        reportedOn: json["reportedOn"],
-        recoveredOn: json["recoveredOn"],
-        deathOn: json["deathOn"],
-        currentState: json["currentState"],
-        isReinfected: json["isReinfected"],
-        source: json["source"],
-        comment: json["comment"],
-        type: json["type"],
-        nationality: json["nationality"] == null ? null : json["nationality"],
-        ward: json["ward"],
-        relatedTo: List<dynamic>.from(json["relatedTo"].map((x) => x)),
+        id: json['id'],
+        province: json['province'],
+        district: json['district'],
+        municipality: json['municipality'],
+        createdOn: json['createdOn'],
+        modifiedOn: json['modifiedOn'],
+        label: json['label'],
+        gender: json['gender'],
+        age: json['age'],
+        point: Point.fromJson(json['point']),
+        occupation: json['occupation'],
+        reportedOn: json['reportedOn'],
+        recoveredOn: json['recoveredOn'],
+        deathOn: json['deathOn'],
+        currentState: json['currentState'],
+        isReinfected: json['isReinfected'],
+        source: json['source'],
+        comment: json['comment'],
+        type: json['type'],
+        nationality: json['nationality'],
+        ward: json['ward'],
+        relatedTo: List<dynamic>.from(json['relatedTo'].map((x) => x)),
       );
 }
 
@@ -104,13 +104,13 @@ class Point {
   List<double> coordinates;
 
   factory Point.fromJson(Map<String, dynamic> json) => Point(
-        type: json["type"],
+        type: json['type'],
         coordinates:
-            List<double>.from(json["coordinates"].map((x) => x.toDouble())),
+            List<double>.from(json['coordinates'].map((x) => x.toDouble())),
       );
 
   Map<String, dynamic> toJson() => {
-        "type": type,
-        "coordinates": List<dynamic>.from(coordinates.map((x) => x)),
+        'type': type,
+        'coordinates': List<dynamic>.from(coordinates.map((x) => x)),
       };
 }

@@ -8,12 +8,12 @@ class CountriesBloc {
   final BehaviorSubject<AllCountries> _subject =
       BehaviorSubject<AllCountries>();
 
-  getCountries() async {
-    AllCountries response = await _repository.getAll();
+  void getCountries() async {
+    final response = await _repository.getAll();
     _subject.sink.add(response);
   }
 
-  dispose() {
+  void dispose() {
     _subject.close();
   }
 
