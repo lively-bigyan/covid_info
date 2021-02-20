@@ -18,7 +18,11 @@ class _NewsListState extends State<NewsList> {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
-      print('failed');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Failed to launch url'),
+        ),
+      );
     }
   }
 
@@ -64,65 +68,48 @@ class _NewsListState extends State<NewsList> {
                   padding: EdgeInsets.all(20),
                   itemCount: snapshot.data.data.length,
                   itemBuilder: (context, i) {
-                    return Column(
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(),
-                          child: Column(
+                    return GestureDetector(
+                      onTap: () => _launchURL(snapshot.data.data[i].url),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text(DateFormat('d MMMM y').format(
-                                      DateTime.parse(
-                                          snapshot.data.data[i].updatedAt)))
-                                ],
-                              ),
-                              const SizedBox(height: 5),
-                              Container(
-                                  height: 150,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                        image: CachedNetworkImageProvider(
-                                            snapshot.data.data[i].imageUrl),
-                                        fit: BoxFit.fill),
-                                  )),
-                              const SizedBox(height: 10),
-                              Text(snapshot.data.data[i].title,
-                                  style: Theme.of(context).textTheme.subtitle1),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text('Source: '),
-                                  Text(
-                                    snapshot.data.data[i].source,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText1
-                                        .copyWith(
-                                            color:
-                                                Theme.of(context).primaryColor),
-                                  )
-                                ],
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    _launchURL(snapshot.data.data[i].url);
-                                  },
-                                  child: Text(
-                                    'Read More',
-                                    style: TextStyle(color: Colors.blue),
-                                  ))
+                              Text(DateFormat('MMM d, y').format(DateTime.parse(
+                                  snapshot.data.data[i].updatedAt)))
                             ],
                           ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                          child: Divider(),
-                        )
-                      ],
+                          const SizedBox(height: 5),
+                          Container(
+                              height: 150,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: CachedNetworkImageProvider(
+                                        snapshot.data.data[i].imageUrl),
+                                    fit: BoxFit.fill),
+                              )),
+                          const SizedBox(height: 10),
+                          Text(snapshot.data.data[i].title,
+                              style: Theme.of(context).textTheme.subtitle1),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text('Source: '),
+                              Text(
+                                snapshot.data.data[i].source,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    .copyWith(
+                                        color: Theme.of(context).primaryColor),
+                              )
+                            ],
+                          ),
+                          const Divider(height: 20),
+                        ],
+                      ),
                     );
                   });
             } else if (snapshot.hasError) {

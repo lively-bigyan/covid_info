@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../models/hospitals.dart';
 import '../../utils/widgets/table_rows.dart';
@@ -69,7 +69,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(SFSymbols.building_2_fill),
+                      Icon(FontAwesomeIcons.addressBook),
                       Text('Address: ',
                           style: Theme.of(context).textTheme.subtitle1),
                       Text(
@@ -80,9 +80,7 @@ class _HospitalDetailsState extends State<HospitalDetails> {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Text('Contacts: ',
                       style: Theme.of(context).textTheme.subtitle1),
                   Row(

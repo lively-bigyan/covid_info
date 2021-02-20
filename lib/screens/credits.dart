@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sfsymbols/flutter_sfsymbols.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Credits extends StatelessWidget {
@@ -68,7 +68,7 @@ class Credits extends StatelessWidget {
                   const SizedBox(height: 20),
                   Row(
                     children: <Widget>[
-                      Icon(SFSymbols.envelope, color: Colors.red[700]),
+                      Icon(FontAwesomeIcons.envelope, color: Colors.red[700]),
                       const SizedBox(width: 10),
                       Text('lively.bigyan@gmail.com'),
                     ],
@@ -76,7 +76,7 @@ class Credits extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     children: <Widget>[
-                      Icon(SFSymbols.logo_facebook, color: Colors.blue[600]),
+                      Icon(FontAwesomeIcons.facebookF, color: Colors.blue[600]),
                       const SizedBox(width: 10),
                       GestureDetector(
                         onTap: () {
